@@ -1,0 +1,3 @@
+[submodule "VPE"]
+	path = VPE
+	url = http://github.com/kuviman/VPE
