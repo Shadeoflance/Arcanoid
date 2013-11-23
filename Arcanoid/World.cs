@@ -7,7 +7,7 @@ class World : IRenderable, IUpdateable
     public Platform Platform = null;
     public static World Current = null;
     public Group<Ball> Balls = new Group<Ball>();
-    public Group<Block> Blocks = new Group<Block>();
+    public Block[,] Blocks = new Block[15, 15];
     public Group<Bonus> Bonuses = new Group<Bonus>();
     public Group<Effect> Effects = new Group<Effect>();
     public double ScreenB = -Game.c / 2, ScreenT = Game.c / 2, ScreenL = -Game.c * 1.3333 / 2, ScreenR = Game.c * 1.3333 / 2;
@@ -41,17 +41,21 @@ class World : IRenderable, IUpdateable
                 a.PlatformCollision((a.Position.X - Platform.Position.X) / Platform.Size.X);
             }
 
-            foreach (var b in Blocks)
-            {
-                if (b.Box.Collide(a.Box) != -1)
+            for(int i = 0; i < Blocks.GetUpperBound(0); i++)
+                for(int j = 0; j < Blocks.GetUpperBound(1); j++)
                 {
-                    b.Hit();
-                    Effects.Add(new BallHit(a.Position, a.Box.Collide(b.Box)));
+                    Block b = Blocks[i, j];
+                    if (b == null)
+                        continue;
+                    if (b.Box.Collide(a.Box) != -1)
+                    {
+                        b.Hit();
+                        Effects.Add(new BallHit(a.Position, a.Box.Collide(b.Box)));
+                    }
+                    a.Collision(a.Box.Collide(b.Box));
+                    if (b.HP <= 0)
+                        Blocks[i, j] = null;
                 }
-                a.Collision(a.Box.Collide(b.Box));
-                if (b.HP <= 0)
-                    Blocks.Remove(b);
-            }
         }
         foreach (var a in Bonuses)
             if (!a.Alive)
@@ -61,7 +65,6 @@ class World : IRenderable, IUpdateable
     public void Update(double dt)
     {
         Balls.Refresh();
-        Blocks.Refresh();
         Bonuses.Refresh();
         Effects.Refresh();
         Effects.Update(dt);
@@ -80,7 +83,9 @@ class World : IRenderable, IUpdateable
     {
         Platform.Render();
         Balls.Render();
-        Blocks.Render();
+        foreach (Block a in Blocks)
+            if(a != null)
+                a.Render();
         Bonuses.Render();
         Effects.Render();
     }

@@ -38,7 +38,7 @@ class Game : State
                     k.AddBonus();
                 }
 
-                World.Current.Blocks.Add(k);
+                World.Current.Blocks[i, j] = k;
             }
         }
         //GUtil.Dump(World.Current.Blocks, "./lvl1.dat");
