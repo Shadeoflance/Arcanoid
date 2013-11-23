@@ -22,7 +22,7 @@ class LevelCreator : State
         pos /= 2;
 
         int i = (int)Math.Floor((pos.X + 210) / 28), j = -(int)Math.Floor((pos.Y - 115) / 10);
-        if (i > 14 || j > 14)
+        if (i > 13 || j > 13 || i < 1 || j < 1)
             return;
         Vec2 p = new Vec2(i * 28 - 196, 120 - j * 10);
         if (button == MouseButton.Middle)
@@ -68,8 +68,8 @@ class LevelCreator : State
     public override void Render()
     {
         Draw.Clear(Color.White);
-        for (int i = 0; i < 15; i++)
-            for (int j = 0; j < 15; j++)
+        for (int i = 2; i < 13; i++)
+            for (int j = 1; j < 14; j++)
                 if (Blocks[i, j] != null)
                     Blocks[i, j].Render();
                 else Draw.Rect(new Vec2(i * 28 - 208, 116 - j * 10), new Vec2(i * 28 - 184, 124 - j * 10), new Color(1, 0.8, 0.8));

@@ -40,20 +40,28 @@ class World : IRenderable, IUpdateable
                 a.PlatformCollision((a.Position.X - Platform.Position.X) / Platform.Size.X);
             }
 
-            for(int i = 0; i < Blocks.GetUpperBound(0); i++)
-                for(int j = 0; j < Blocks.GetUpperBound(1); j++)
+            for(int i = 1; i < Blocks.GetUpperBound(0); i++)
+                for(int j = 1; j <= Blocks.GetUpperBound(1); j++)
                 {
                     Block b = Blocks[i, j];
                     if (b == null)
                         continue;
                     if (b.Box.Collide(a.Box) != -1)
                     {
+                        int h = b.Box.Collide(a.Box);
+                        if (h == 0 && Blocks[i, j - 1] != null)
+                            return;
+                        if (h == 1 && Blocks[i + 1, j] != null)
+                            return;
+                        if (h == 2 && Blocks[i, j + 1] != null)
+                            return;
+                        if (h == 3 && Blocks[i - 1, j] != null)
+                            return;
+                        
                         b.Hit();
                         Effects.Add(new BallHit(a.Position, a.Box.Collide(b.Box)));
+                        a.Collision(a.Box.Collide(b.Box));
                     }
-                    a.Collision(a.Box.Collide(b.Box));
-                    if (b.HP <= 0)
-                        Blocks[i, j] = null;
                 }
         }
         foreach (var a in Bonuses)
@@ -66,6 +74,10 @@ class World : IRenderable, IUpdateable
         Balls.Refresh();
         Bonuses.Refresh();
         Effects.Refresh();
+        for (int i = 1; i < Blocks.GetUpperBound(0); i++)
+            for (int j = 1; j <= Blocks.GetUpperBound(1); j++)
+                if (Blocks[i, j] != null && Blocks[i, j].HP == 0)
+                    Blocks[i, j] = null;
         Effects.Update(dt);
         if (ShootBall != null)
         {
