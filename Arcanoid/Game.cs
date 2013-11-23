@@ -52,6 +52,8 @@ class Game : State
         dt = Math.Min(dt, 1.0 / 60);
         base.Update(dt);
         World.Current.Update(dt);
+        if (World.Current.Balls.Count == 0)
+            App.NextState = new GameOver();
     }
 
     public override void Render()
