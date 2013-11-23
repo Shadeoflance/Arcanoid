@@ -11,6 +11,7 @@ class Game : State
 
     public Game()
     {
+        cam.Apply();
         World.Current = new World();
         World.Current.Platform = new Platform();
         World.Current.Platform.Position = new Vec2(0, -100);
@@ -21,7 +22,6 @@ class Game : State
 
         World.Current.Balls.Add(b);
         double w = 12, h = 4;
-        Block.Size = new Vec2(w, h);
         for (int i = 1; i < 10; i++)
         {
             for (int j = 0; j < 6; j++)
@@ -33,7 +33,7 @@ class Game : State
                     k = new Block3hp();
                 k.Position = new Vec2(((i % 2 == 1) ? i / 2 * (w * 2 + 2) : -i / 2 * (w * 2 + 2)), j * (h * 2 + 2) + 60);
 
-                if (World.Current.Random.Next(3) == 2)
+                if (Program.Random.Next(3) == 2)
                 {
                     k.AddBonus();
                 }
@@ -42,7 +42,7 @@ class Game : State
             }
         }
         //GUtil.Dump(World.Current.Blocks, "./lvl1.dat");
-        //World.Current.Blocks = GUtil.Load<Group<Block>>("lvl1.dat");
+        World.Current.Blocks = GUtil.Load<Block[,]>("temp.dat");
 
         World.Current.Effects.Add(new ShootLine());
     }
@@ -61,7 +61,6 @@ class Game : State
         Draw.Clear(Color.White);
         base.Render();
         World.Current.Render();
-        cam.Apply();
     }
     public override void KeyDown(Key key)
     {
@@ -86,6 +85,7 @@ class Game : State
 
 class Program
 {
+    public static Random Random = new Random();
     static void Main()
     {
         App.Fullscreen = false;

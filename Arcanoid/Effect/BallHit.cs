@@ -33,27 +33,27 @@ class BallHit : Effect
             {
                 case 0:
                     {
-                        w.Vel = new Vec2(World.Current.Random.NextDouble(-1, 1), World.Current.Random.NextDouble(-1, 0));
+                        w.Vel = new Vec2(Program.Random.NextDouble(-1, 1), Program.Random.NextDouble(-1, 0));
                         break;
                     }
                 case 1:
                     {
-                        w.Vel = new Vec2(World.Current.Random.NextDouble(-1, 0), World.Current.Random.NextDouble(-1, 1));
+                        w.Vel = new Vec2(Program.Random.NextDouble(-1, 0), Program.Random.NextDouble(-1, 1));
                         break;
                     }
                 case 2:
                     {
-                        w.Vel = new Vec2(World.Current.Random.NextDouble(-1, 1), World.Current.Random.NextDouble(0, 1));
+                        w.Vel = new Vec2(Program.Random.NextDouble(-1, 1), Program.Random.NextDouble(0, 1));
                         break;
                     }
                 case 3:
                     {
-                        w.Vel = new Vec2(World.Current.Random.NextDouble(0, 1), World.Current.Random.NextDouble(-1, 1));
+                        w.Vel = new Vec2(Program.Random.NextDouble(0, 1), Program.Random.NextDouble(-1, 1));
                         break;
                     }
             }
             w.Vel = w.Vel.Unit;
-            w.Vel *= World.Current.Random.NextDouble(0, 2);
+            w.Vel *= Program.Random.NextDouble(0, 2);
             w.Position = Position;
             Particles.Add(w);
         }

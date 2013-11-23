@@ -79,6 +79,7 @@
     <Compile Include="Effect\Effect.cs" />
     <Compile Include="Effect\ShootLine.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="LevelCreator.cs" />
     <Compile Include="Menu\Button.cs" />
     <Compile Include="Menu\GameOver.cs" />
     <Compile Include="Menu\Menu.cs" />

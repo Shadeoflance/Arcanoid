@@ -26,7 +26,7 @@ class Bonus : IUpdateable, IRenderable
 
     public static Bonus RandomBonus()
     {
-        switch(World.Current.Random.Next(7))
+        switch(Program.Random.Next(7))
         {
             case 0:
                 {

@@ -4,7 +4,7 @@ using VitPro.Engine;
 
 partial class Block
 {
-    public static Vec2 Size = new Vec2(15, 7);
+    public static Vec2 Size = new Vec2(12, 4);
     public Vec2 Position;
     public int HP = 1;
     public Box Box { get { return new Box(Position, Size); } }

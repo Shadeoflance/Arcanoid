@@ -11,7 +11,6 @@ class World : IRenderable, IUpdateable
     public Group<Bonus> Bonuses = new Group<Bonus>();
     public Group<Effect> Effects = new Group<Effect>();
     public double ScreenB = -Game.c / 2, ScreenT = Game.c / 2, ScreenL = -Game.c * 1.3333 / 2, ScreenR = Game.c * 1.3333 / 2;
-    public Random Random = new Random();
     public Ball ShootBall;
 
     void Collision()
