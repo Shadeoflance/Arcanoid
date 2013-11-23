@@ -15,17 +15,17 @@ class Button : IRenderable
 
     void MouseOver()
     {
-        Vec2 pos = Mouse.Position;
-        pos += new Vec2(0, -480);
-        pos = new Vec2(pos.X, -pos.Y);
-        if (Hit(pos))
+        if (Hit())
             color = new Color(0.7, 0.7, 0.7);
         else color = new Color(0.4, 0.4, 0.4);
     }
 
-    public bool Hit(Vec2 pos)
+    public bool Hit()
     {
-        pos -= new Vec2(320, 240);
+        Vec2 pos = Mouse.Position;
+        pos += new Vec2(0, -240);
+        pos = new Vec2(pos.X, -pos.Y);
+        pos -= new Vec2(320, 0);
         pos /= 2;
         if (pos.X < Position.X + Size.X && pos.X > Position.X && pos.Y < Position.Y + Size.Y && pos.Y > Position.Y)
             return true;

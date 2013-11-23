@@ -18,7 +18,7 @@ class Menu : State
     {
         if (button != MouseButton.Left)
             return;
-        if (StartButton.Hit(pos))
+        if (StartButton.Hit())
             App.NextState = new Game();
     }
 

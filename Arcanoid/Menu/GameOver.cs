@@ -23,9 +23,9 @@ class GameOver : State
     {
         if (button != MouseButton.Left)
             return;
-        if (Replay.Hit(pos))
+        if (Replay.Hit())
             App.NextState = new Game();
-        if (BackToMenu.Hit(pos))
+        if (BackToMenu.Hit())
             App.NextState = new Menu();
     }
 
