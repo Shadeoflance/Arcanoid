@@ -9,13 +9,19 @@ partial class Block
     public int HP = 1;
     public Box Box { get { return new Box(Position, Size); } }
 
+    public Block(int hp)
+    {
+        HP = hp;
+    }
+
     public void Hit()
     {
         HP--;
-        if (HP == 0 && bonus != null)
+        if (HP == 0 && bonus)
         {
-            bonus.Position = Position;
-            World.Current.Bonuses.Add(bonus);
+            Bonus b = Bonus.RandomBonus();
+            b.Position = Position;
+            World.Current.Bonuses.Add(b);
         }
     }
 }

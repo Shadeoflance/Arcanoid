@@ -21,26 +21,6 @@ class Game : State
         Ball b = new Ball();
 
         World.Current.Balls.Add(b);
-        double w = 12, h = 4;
-        for (int i = 1; i < 10; i++)
-        {
-            for (int j = 0; j < 6; j++)
-            {
-                Block k = new Block1hp();
-                if (i == 8 || i == 9 || j == 0 || j == 5)
-                    k = new Block2hp();
-                if (i < 4 && j > 2 && j < 5)
-                    k = new Block3hp();
-                k.Position = new Vec2(((i % 2 == 1) ? i / 2 * (w * 2 + 2) : -i / 2 * (w * 2 + 2)), j * (h * 2 + 2) + 60);
-
-                if (Program.Random.Next(3) == 2)
-                {
-                    k.AddBonus();
-                }
-
-                World.Current.Blocks[i, j] = k;
-            }
-        }
         //GUtil.Dump(World.Current.Blocks, "./lvl1.dat");
         World.Current.Blocks = GUtil.Load<Block[,]>("temp.dat");
 

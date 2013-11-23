@@ -60,10 +60,7 @@
   <ItemGroup>
     <Compile Include="Ball\Ball.cs" />
     <Compile Include="Ball\Physics.cs" />
-    <Compile Include="Block\Block1hp.cs" />
-    <Compile Include="Block\Block2hp.cs" />
     <Compile Include="Block\Block.cs" />
-    <Compile Include="Block\Block3hp.cs" />
     <Compile Include="Block\Physics.cs" />
     <Compile Include="Bonus\Bonus.cs" />
     <Compile Include="Bonus\PlatfomStretch.cs" />

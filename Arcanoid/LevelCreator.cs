@@ -29,7 +29,7 @@ class LevelCreator : State
         {
             if (Blocks[i, j] == null)
                 return;
-            Blocks[i, j].bonus = Bonus.RandomBonus();
+            Blocks[i, j].bonus = true;
             return;
         }
         if (button == MouseButton.Right)
@@ -39,17 +39,17 @@ class LevelCreator : State
         }
         if (Blocks[i, j] == null)
         {
-            Blocks[i, j] = new Block1hp();
+            Blocks[i, j] = new Block(1);
             Blocks[i, j].Position = p;
         }
         else if (Blocks[i, j].HP == 1)
         {
-            Blocks[i, j] = new Block2hp();
+            Blocks[i, j] = new Block(2);
             Blocks[i, j].Position = p;
         }
         else if (Blocks[i, j].HP == 2)
         {
-            Blocks[i, j] = new Block3hp();
+            Blocks[i, j] = new Block(3);
             Blocks[i, j].Position = p;
         }
         else if (Blocks[i, j].HP == 3)
