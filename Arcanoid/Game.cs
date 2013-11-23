@@ -87,6 +87,6 @@ class Program
     static void Main()
     {
         App.Fullscreen = false;
-        App.Run(new Game());
+        App.Run(new Menu());
     }
 }

@@ -79,6 +79,8 @@
     <Compile Include="Effect\Effect.cs" />
     <Compile Include="Effect\ShootLine.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="Menu\Button.cs" />
+    <Compile Include="Menu\Menu.cs" />
     <Compile Include="Platform\Physics.cs" />
     <Compile Include="Platform\Platform.cs" />
     <Compile Include="World.cs" />

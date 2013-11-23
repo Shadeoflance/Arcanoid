@@ -46,11 +46,11 @@ partial class Ball
 
     public void PlatformCollision(double p)
     {
-        if (Math.Abs(p) <= 0.5)
-        {
-            Vel = new Vec2(Vel.X, Math.Abs(Vel.Y));
-            return;
-        }
+        //if (Math.Abs(p) <= 0.5)
+        //{
+        //    Vel = new Vec2(Vel.X, Math.Abs(Vel.Y));
+        //    return;
+        //}
         if (Math.Abs(p) > 1)
             p /= Math.Abs(p);
         Vel = new Vec2(AngRange * p, Math.Sin(Math.PI / 4)).Unit;
