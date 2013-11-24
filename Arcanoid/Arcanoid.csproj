@@ -74,6 +74,7 @@
     <Compile Include="Effect\BallHit.cs" />
     <Compile Include="Effect\BonusBlock.cs" />
     <Compile Include="Effect\Effect.cs" />
+    <Compile Include="Effect\Score.cs" />
     <Compile Include="Effect\ScorePlus.cs" />
     <Compile Include="Effect\ShootLine.cs" />
     <Compile Include="Game.cs" />

@@ -14,6 +14,7 @@ class ScorePlus : Effect
         Position = b.Position;
         double t = 10;
         Streak = b.Streak;
+        font.Smooth = false;
         switch(Program.Random.Next(4))
         {
             case 0:

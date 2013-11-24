@@ -25,6 +25,7 @@ class Game : State
         World.Current.Blocks = GUtil.Load<Block[,]>("temp.dat");
 
         World.Current.Effects.Add(new ShootLine());
+        World.Current.Effects.Add(new Score());
     }
 
     public override void Update(double dt)
