@@ -21,16 +21,32 @@ class ShootLine : Effect
         }
         Draw.Load();
     }
+    bool Rot = false;
     public override void Update(double dt)
     {
         base.Update(dt);
         if (World.Current.ShootBall == null)
             return;
         Position = World.Current.ShootBall.Position;
-        if (Key.A.Pressed() && Dir.Arg < Math.PI * 3 / 4)
-            Dir = Vec2.Rotate(Dir, Math.PI * dt * 2);
-        if (Key.D.Pressed() && Dir.Arg > Math.PI / 4)
-            Dir = Vec2.Rotate(Dir, -Math.PI * dt * 2);
+        if (Rot)
+            Dir = Vec2.Rotate(Dir, -Math.PI * dt);
+        else Dir = Vec2.Rotate(Dir, Math.PI * dt);
+
+        if (Dir.Arg > Math.PI * 3 / 4)
+        {
+            Dir = new Vec2(Math.Cos(Math.PI * 3 / 4), Math.Sin(Math.PI * 3 / 4));
+            Rot = true;
+        }
+        if (Dir.Arg < Math.PI / 4)
+        {
+            Dir = new Vec2(Math.Cos(Math.PI / 4), Math.Sin(Math.PI / 4));
+            Rot = false;
+        }
+
+        //if (Rot && Dir.Arg < Math.PI * 3 / 4)
+        //    Dir = Vec2.Rotate(Dir, Math.PI * dt * 2);
+        //if (!Rot && Dir.Arg > Math.PI / 4)
+        //    Dir = Vec2.Rotate(Dir, -Math.PI * dt * 2);
         World.Current.ShootBall.Vel = Dir.Unit;
     }
 }

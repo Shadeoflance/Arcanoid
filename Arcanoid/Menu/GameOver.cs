@@ -11,8 +11,8 @@ class GameOver : State
 
     public GameOver()
     {
-        Replay.text = "Replay";
-        BackToMenu.text = "BackToMenu";
+        Replay.text = "REPLAY";
+        BackToMenu.text = "BACK TO MENU";
         Replay.Position = new Vec2(-75, 50);
         Replay.Size = new Vec2(150, 22);
         BackToMenu.Position = new Vec2(-75, 0);
