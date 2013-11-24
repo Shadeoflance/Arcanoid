@@ -6,10 +6,19 @@ class Game : State
 {
     public const double c = 240;
     Camera cam = new Camera(c);
+    
+    static int CurrentLevel;
+    public static void NextLevel()
+    {
+        CurrentLevel++;
+        World.Current.Blocks = GUtil.Load<Block[,]>("./lvl" + CurrentLevel.ToString() + ".dat");
+        World.Current.Platform.Position = new Vec2(0, -100);
+        World.Current.Balls.Clear();
 
-
-
-    public Game()
+        Ball b = new Ball();
+        World.Current.Balls.Add(b);
+    }
+    public Game(int level)
     {
         cam.Apply();
         World.Current = new World();
@@ -22,7 +31,8 @@ class Game : State
 
         World.Current.Balls.Add(b);
         //GUtil.Dump(World.Current.Blocks, "./lvl1.dat");
-        World.Current.Blocks = GUtil.Load<Block[,]>("temp.dat");
+        CurrentLevel = level;
+        World.Current.Blocks = GUtil.Load<Block[,]>("./lvl" + level.ToString() + ".dat");
 
         World.Current.Effects.Add(new ShootLine());
         World.Current.Effects.Add(new Score());

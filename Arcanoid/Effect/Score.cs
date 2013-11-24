@@ -15,9 +15,9 @@ class Score : Effect
         Draw.Save();
         Draw.Translate(new Vec2(World.Current.ScreenL, World.Current.ScreenB));
         font.Smooth = false;
-        Draw.Scale(15);
+        Draw.Scale(20);
         Draw.Color(new Color(0.7, 0.7, 0.7));
-        font.Render(text);//World.Current.Score.ToString());
+        font.Render(text);
         Draw.Load();
     }
 }

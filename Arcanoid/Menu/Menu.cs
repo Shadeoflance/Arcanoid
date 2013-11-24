@@ -23,7 +23,7 @@ class Menu : State
         if (button != MouseButton.Left)
             return;
         if (StartButton.Hit())
-            App.NextState = new Game();
+            App.NextState = new Game(1);
         if (LevelCreator.Hit())
             App.NextState = new LevelCreator();
     }

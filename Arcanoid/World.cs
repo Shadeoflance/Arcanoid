@@ -14,6 +14,14 @@ class World : IRenderable, IUpdateable
     public Ball ShootBall;
     public int Score = 0;
 
+    bool BlockCheck()
+    {
+        foreach (var a in Blocks)
+            if (a != null)
+                return false;
+        return true;
+    }
+
     void Collision()
     {
         foreach (var a in Balls)
@@ -81,7 +89,11 @@ class World : IRenderable, IUpdateable
         for (int i = 1; i < Blocks.GetUpperBound(0); i++)
             for (int j = 1; j <= Blocks.GetUpperBound(1); j++)
                 if (Blocks[i, j] != null && Blocks[i, j].HP == 0)
+                {
                     Blocks[i, j] = null;
+                    if (BlockCheck())
+                        Game.NextLevel();
+                }
         Effects.Update(dt);
         if (ShootBall != null)
         {
