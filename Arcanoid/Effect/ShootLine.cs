@@ -29,8 +29,8 @@ class ShootLine : Effect
             return;
         Position = World.Current.ShootBall.Position;
         if (Rot)
-            Dir = Vec2.Rotate(Dir, -Math.PI * dt);
-        else Dir = Vec2.Rotate(Dir, Math.PI * dt);
+            Dir = Vec2.Rotate(Dir, -Math.PI * dt / 1.2);
+        else Dir = Vec2.Rotate(Dir, Math.PI * dt / 1.2);
 
         if (Dir.Arg > Math.PI * 3 / 4)
         {
@@ -42,11 +42,6 @@ class ShootLine : Effect
             Dir = new Vec2(Math.Cos(Math.PI / 4), Math.Sin(Math.PI / 4));
             Rot = false;
         }
-
-        //if (Rot && Dir.Arg < Math.PI * 3 / 4)
-        //    Dir = Vec2.Rotate(Dir, Math.PI * dt * 2);
-        //if (!Rot && Dir.Arg > Math.PI / 4)
-        //    Dir = Vec2.Rotate(Dir, -Math.PI * dt * 2);
         World.Current.ShootBall.Vel = Dir.Unit;
     }
 }

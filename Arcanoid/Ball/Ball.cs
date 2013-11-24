@@ -4,6 +4,8 @@ using System;
 
 partial class Ball : IUpdateable, IRenderable
 {
+    public int Streak = 1;
+
     public void Update(double dt)
     {
         UpdatePhysics(dt);

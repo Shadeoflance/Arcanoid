@@ -31,7 +31,8 @@ class Button : IRenderable
             return true;
         return false;
     }
-    static SystemFont font = new SystemFont("Impact", 50, FontStyle.Bold);
+    static SystemFont font = new SystemFont("04b03", 50, FontStyle.Bold);
+    
     public string text;
 
     public void Render()

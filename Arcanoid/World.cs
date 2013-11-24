@@ -12,6 +12,7 @@ class World : IRenderable, IUpdateable
     public Group<Effect> Effects = new Group<Effect>();
     public double ScreenB = -Game.c / 2, ScreenT = Game.c / 2, ScreenL = -Game.c * 1.3333 / 2, ScreenR = Game.c * 1.3333 / 2;
     public Ball ShootBall;
+    public int Score = 0;
 
     void Collision()
     {
@@ -61,6 +62,8 @@ class World : IRenderable, IUpdateable
                         b.Hit();
                         Effects.Add(new BallHit(a.Position, a.Box.Collide(b.Box)));
                         a.Collision(a.Box.Collide(b.Box));
+                        World.Current.Effects.Add(new ScorePlus(a));
+                        a.Streak *= 2;
                     }
                 }
         }

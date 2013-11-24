@@ -54,6 +54,7 @@ partial class Ball
         if (Math.Abs(p) > 1)
             p /= Math.Abs(p);
         Vel = new Vec2(AngRange * p, Math.Sin(Math.PI / 4)).Unit;
+        Streak = 1;
     }
 
     public void UpdatePhysics(double dt)
