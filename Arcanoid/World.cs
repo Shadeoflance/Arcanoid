@@ -72,7 +72,8 @@ class World : IRenderable, IUpdateable
                         a.Collision(a.Box.Collide(b.Box));
                         World.Current.Effects.Add(new ScorePlus(a));
                         Score += a.Streak;
-                        a.Streak *= 2;
+                        if(a.Streak != 1024)
+                            a.Streak *= 2;
                     }
                 }
         }

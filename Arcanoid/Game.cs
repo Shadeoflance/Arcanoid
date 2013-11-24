@@ -11,6 +11,8 @@ class Game : State
     public static void NextLevel()
     {
         CurrentLevel++;
+        if (CurrentLevel > 10)
+            App.NextState = new Victory();
         World.Current.Blocks = GUtil.Load<Block[,]>("./lvl" + CurrentLevel.ToString() + ".dat");
         World.Current.Platform.Position = new Vec2(0, -100);
         World.Current.Balls.Clear();
@@ -30,7 +32,6 @@ class Game : State
         Ball b = new Ball();
 
         World.Current.Balls.Add(b);
-        //GUtil.Dump(World.Current.Blocks, "./lvl1.dat");
         CurrentLevel = level;
         World.Current.Blocks = GUtil.Load<Block[,]>("./lvl" + level.ToString() + ".dat");
 
@@ -80,6 +81,6 @@ class Program
     static void Main()
     {
         App.Fullscreen = false;
-        App.Run(new Menu());
+        App.Run(new Game(10));
     }
 }

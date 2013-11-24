@@ -7,7 +7,7 @@ class SpeedDown : Bonus
     public override void Get()
     {
         base.Get();
-        Ball.Speed = Math.Max(Ball.Speed - 75, 100);
+        Ball.Speed = Math.Max(Ball.Speed - 75, 130);
     }
 
     Texture Tex = new Texture("Data/img/SpeedDown.png");
