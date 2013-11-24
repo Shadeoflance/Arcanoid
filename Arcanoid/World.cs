@@ -77,6 +77,29 @@ class World : IRenderable, IUpdateable
                             Score += a.Streak;
                             if (a.Streak != 1024)
                                 a.Streak *= 2;
+                            switch (h)
+                            {
+                                case 0:
+                                    {
+                                        a.Position = new Vec2(a.Position.X, b.Position.Y + Block.Size.Y + Ball.Size.Y);
+                                        break;
+                                    }
+                                case 1:
+                                    {
+                                        a.Position = new Vec2(b.Position.X + Block.Size.X + Ball.Size.X, a.Position.Y);
+                                        break;
+                                    }
+                                case 2:
+                                    {
+                                        a.Position = new Vec2(a.Position.X, b.Position.Y - Block.Size.Y - Ball.Size.Y);
+                                        break;
+                                    }
+                                case 3:
+                                    {
+                                        a.Position = new Vec2(b.Position.X - Block.Size.X - Ball.Size.X, a.Position.Y);
+                                        break;
+                                    }
+                            }
                         }
                     }
                 }
