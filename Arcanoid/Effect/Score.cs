@@ -13,7 +13,7 @@ class Score : Effect
             text += "0";
         text += World.Current.Score.ToString();
         Draw.Save();
-        Draw.Translate(new Vec2(World.Current.ScreenL, World.Current.ScreenB));
+        Draw.Translate(new Vec2(World.Current.ScreenL - 2, World.Current.ScreenB - 2));
         font.Smooth = false;
         Draw.Scale(20);
         Draw.Color(new Color(0.7, 0.7, 0.7));

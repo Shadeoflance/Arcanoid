@@ -10,7 +10,7 @@ class World : IRenderable, IUpdateable
     public Block[,] Blocks = new Block[15, 15];
     public Group<Bonus> Bonuses = new Group<Bonus>();
     public Group<Effect> Effects = new Group<Effect>();
-    public double ScreenB = -Game.c / 2, ScreenT = Game.c / 2, ScreenL = -Game.c * 1.3333 / 2, ScreenR = Game.c * 1.3333 / 2;
+    public double ScreenB = -Game.c / 2 + 2, ScreenT = Game.c / 2 - 2, ScreenL = -Game.c * 1.3333 / 2 + 2, ScreenR = Game.c * 1.3333 / 2 - 2;
     public Ball ShootBall;
     public int Score = 0;
 
@@ -58,22 +58,26 @@ class World : IRenderable, IUpdateable
                     if (b.Box.Collide(a.Box) != -1)
                     {
                         int h = b.Box.Collide(a.Box);
+                        bool sidebug = false;
                         if (h == 0 && Blocks[i, j - 1] != null)
-                            return;
+                            sidebug = true;
                         if (h == 1 && Blocks[i + 1, j] != null)
-                            return;
+                            sidebug = true;
                         if (h == 2 && Blocks[i, j + 1] != null)
-                            return;
+                            sidebug = true;
                         if (h == 3 && Blocks[i - 1, j] != null)
-                            return;
+                            sidebug = true;
                         
-                        b.Hit();
-                        Effects.Add(new BallHit(a.Position, a.Box.Collide(b.Box)));
-                        a.Collision(a.Box.Collide(b.Box));
-                        World.Current.Effects.Add(new ScorePlus(a));
-                        Score += a.Streak;
-                        if(a.Streak != 1024)
-                            a.Streak *= 2;
+                        if (!sidebug)
+                        {
+                            b.Hit();
+                            Effects.Add(new BallHit(a.Position, a.Box.Collide(b.Box)));
+                            a.Collision(a.Box.Collide(b.Box));
+                            World.Current.Effects.Add(new ScorePlus(a));
+                            Score += a.Streak;
+                            if (a.Streak != 1024)
+                                a.Streak *= 2;
+                        }
                     }
                 }
         }
