@@ -79,9 +79,11 @@ class Program
 {
     public static Random Random = new Random();
     public static StateManager Manager = new StateManager(new Menu());
+    public static Font font = new Font("./Data/font.TTF", 50, FontStyle.Bold);
     static void Main()
     {
         App.Fullscreen = false;
+        font.Smooth = false;
         App.Run(Manager);
     }
 }

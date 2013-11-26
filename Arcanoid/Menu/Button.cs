@@ -8,11 +8,6 @@ class Button : IRenderable
     public Vec2 Size;
     public Color color = new Color(0.4, 0.4, 0.4);
 
-    public Button()
-    {
-        font.Smooth = false;
-    }
-
     void MouseOver()
     {
         if (Hit())
@@ -31,7 +26,6 @@ class Button : IRenderable
             return true;
         return false;
     }
-    static SystemFont font = new SystemFont("04b03", 50, FontStyle.Bold);
     
     public string text;
 
@@ -42,7 +36,7 @@ class Button : IRenderable
         Draw.Save();
         Draw.Translate(Position);
         Draw.Scale(20);
-        font.Render(text);
+        Program.font.Render(text);
         Draw.Load();
     }
 }

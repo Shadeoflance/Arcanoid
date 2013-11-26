@@ -5,7 +5,6 @@ using System;
 class ScorePlus : Effect
 {
     Ball b;
-    Vec2 Position;
     int Streak;
     public ScorePlus(Ball b)
     {
@@ -14,7 +13,6 @@ class ScorePlus : Effect
         Position = b.Position;
         double t = 10;
         Streak = b.Streak;
-        font.Smooth = false;
         switch(Program.Random.Next(4))
         {
             case 0:
@@ -39,7 +37,6 @@ class ScorePlus : Effect
                 }
         }
     }
-    static SystemFont font = new SystemFont("04b03", 50, FontStyle.Bold);
 
     public override void Render()
     {
@@ -49,7 +46,7 @@ class ScorePlus : Effect
         Draw.Translate(Position);
         Draw.Scale(10);
         Draw.Color(new Color(0.5 + Time / 3, 0.5 + Time / 3, 0.5 + Time / 3));
-        font.Render(text);
+        Program.font.Render(text);
         Draw.Load();
     }
 
