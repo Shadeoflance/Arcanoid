@@ -24,9 +24,9 @@ class GameOver : State
         if (button != MouseButton.Left)
             return;
         if (Replay.Hit())
-            App.NextState = new Game(1);
+            StateManager.NextState = new Game(1);
         if (BackToMenu.Hit())
-            App.NextState = new Menu();
+            StateManager.NextState = new Menu();
     }
 
     public override void Render()

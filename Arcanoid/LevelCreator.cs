@@ -61,7 +61,7 @@ class LevelCreator : State
         if (key == Key.S)
         {
             GUtil.Dump(Blocks, "./temp.dat");
-            App.NextState = new Menu();
+            StateManager.NextState = new Menu();
         }
     }
 

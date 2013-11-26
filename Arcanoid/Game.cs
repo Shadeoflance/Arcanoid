@@ -12,8 +12,8 @@ class Game : State
     {
         CurrentLevel++;
         if (CurrentLevel > 10)
-            App.NextState = new Victory();
-        World.Current.Blocks = GUtil.Load<Block[,]>("./lvl" + CurrentLevel.ToString() + ".dat");
+            Program.Manager.NextState = new Victory();
+        World.Current.Blocks = GUtil.Load<Block[,]>("./Data/levels/lvl" + CurrentLevel.ToString() + ".dat");
         World.Current.Platform.Position = new Vec2(0, -100);
         World.Current.Balls.Clear();
 
@@ -33,7 +33,7 @@ class Game : State
 
         World.Current.Balls.Add(b);
         CurrentLevel = level;
-        World.Current.Blocks = GUtil.Load<Block[,]>("./lvl" + level.ToString() + ".dat");
+        World.Current.Blocks = GUtil.Load<Block[,]>("./Data/levels/lvl" + level.ToString() + ".dat");
 
         World.Current.Effects.Add(new ShootLine());
         World.Current.Effects.Add(new Score());
@@ -45,7 +45,7 @@ class Game : State
         base.Update(dt);
         World.Current.Update(dt);
         if (World.Current.Balls.Count == 0)
-            App.NextState = new GameOver();
+            Program.Manager.NextState = new GameOver();
     }
 
     public override void Render()
@@ -78,9 +78,10 @@ class Game : State
 class Program
 {
     public static Random Random = new Random();
+    public static StateManager Manager = new StateManager(new Menu());
     static void Main()
     {
         App.Fullscreen = false;
-        App.Run(new Menu());
+        App.Run(Manager);
     }
 }

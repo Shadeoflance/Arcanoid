@@ -23,7 +23,7 @@ class Victory : State
         if (button != MouseButton.Left)
             return;
         if (BackToMenu.Hit())
-            App.NextState = new Menu();
+            StateManager.NextState = new Menu();
     }
     public override void Render()
     {

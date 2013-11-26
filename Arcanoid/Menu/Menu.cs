@@ -23,9 +23,9 @@ class Menu : State
         if (button != MouseButton.Left)
             return;
         if (StartButton.Hit())
-            App.NextState = new Game(1);
+            StateManager.NextState = new Game(1);
         if (LevelCreator.Hit())
-            App.NextState = new LevelCreator();
+            StateManager.NextState = new LevelCreator();
     }
 
     public override void Render()
