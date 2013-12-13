@@ -14,6 +14,18 @@ class World : IRenderable, IUpdateable
     public Ball ShootBall;
     public int Score = 0;
 
+    public int CurrentBalls
+    {
+        get
+        {
+            int t = 0;
+            foreach (var a in Balls)
+                if (a.OnPlatform == false)
+                    t++;
+            return t;
+        }
+    }
+
     bool BlockCheck()
     {
         foreach (var a in Blocks)
@@ -74,7 +86,7 @@ class World : IRenderable, IUpdateable
                             Effects.Add(new BallHit(a.Position, a.Box.Collide(b.Box)));
                             a.Collision(a.Box.Collide(b.Box));
                             World.Current.Effects.Add(new ScorePlus(a));
-                            Score += a.Streak;
+                            Score += a.Streak * CurrentBalls;
                             if (a.Streak != 1024)
                                 a.Streak *= 2;
                             switch (h)

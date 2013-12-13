@@ -42,11 +42,23 @@ class ScorePlus : Effect
     {
         base.Render();
         string text = "+" + Streak.ToString();
+        int balls = World.Current.CurrentBalls;
+        string mult = "";
+        if(balls > 1)
+            mult = "x " + balls;
         Draw.Save();
         Draw.Translate(Position);
         Draw.Scale(10);
         Draw.Color(new Color(0.5 + Time / 3, 0.5 + Time / 3, 0.5 + Time / 3));
         Program.font.Render(text);
+        Draw.Load();
+        if (mult == "")
+            return;
+        Draw.Save();
+        Draw.Translate(Position + new Vec2(18, 0));
+        Draw.Scale(10);
+        Draw.Color(new Color(0.2 + Time / 3, 0.5 + Time / 3, 0.2 + Time / 3));
+        Program.font.Render(mult);
         Draw.Load();
     }
 
