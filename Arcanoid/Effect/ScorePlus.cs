@@ -42,7 +42,7 @@ class ScorePlus : Effect
     {
         base.Render();
         string text = "+" + Streak.ToString();
-        int balls = World.Current.CurrentBalls;
+        int balls = World.Current.Balls.Count;
         string mult = "";
         if(balls > 1)
             mult = "x " + balls;

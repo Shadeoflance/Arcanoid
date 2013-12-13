@@ -11,20 +11,9 @@ class World : IRenderable, IUpdateable
     public Group<Bonus> Bonuses = new Group<Bonus>();
     public Group<Effect> Effects = new Group<Effect>();
     public double ScreenB = -Game.c / 2 + 2, ScreenT = Game.c / 2 - 2, ScreenL = -Game.c * 1.3333 / 2 + 2, ScreenR = Game.c * 1.3333 / 2 - 2;
-    public Ball ShootBall;
+    public Ball PlatformBall;
+    public bool Shooting = false;
     public int Score = 0;
-
-    public int CurrentBalls
-    {
-        get
-        {
-            int t = 0;
-            foreach (var a in Balls)
-                if (a.OnPlatform == false)
-                    t++;
-            return t;
-        }
-    }
 
     bool BlockCheck()
     {
@@ -51,7 +40,7 @@ class World : IRenderable, IUpdateable
                 a.Collision(0);
             }
 
-            if (a.Box.Collide(Platform.Box) != -1 && !a.OnPlatform)
+            if (a.Box.Collide(Platform.Box) != -1)
             {
                 if (a.Box.Collide(Platform.Box) != 2)
                 {
@@ -86,7 +75,7 @@ class World : IRenderable, IUpdateable
                             Effects.Add(new BallHit(a.Position, a.Box.Collide(b.Box)));
                             a.Collision(a.Box.Collide(b.Box));
                             World.Current.Effects.Add(new ScorePlus(a));
-                            Score += a.Streak * CurrentBalls;
+                            Score += a.Streak * Balls.Count;
                             if (a.Streak != 1024)
                                 a.Streak *= 2;
                             switch (h)
@@ -135,7 +124,13 @@ class World : IRenderable, IUpdateable
                         Game.NextLevel();
                 }
         Effects.Update(dt);
-        if (ShootBall != null)
+        if (PlatformBall != null)
+        {
+            PlatformBall.Update(dt);
+            var p = World.Current.Platform;
+            World.Current.PlatformBall.Position = p.Position + new Vec2(0, p.Size.Y + Ball.Size.Y);
+        }
+        if (Shooting)
         {
             return;
         }
@@ -155,5 +150,7 @@ class World : IRenderable, IUpdateable
                 a.Render();
         Bonuses.Render();
         Effects.Render();
+        if (PlatformBall != null)
+            PlatformBall.Render();
     }
 }

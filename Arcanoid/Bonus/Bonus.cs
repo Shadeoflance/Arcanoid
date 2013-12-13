@@ -66,8 +66,6 @@ class Bonus : IUpdateable, IRenderable
         Collision();
     }
 
-    public Texture Tex;
-
     public virtual void Render()
     {
     }

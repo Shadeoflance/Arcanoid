@@ -8,7 +8,7 @@ class ShootLine : Effect
     public override void Render()
     {
         base.Render();
-        if (World.Current.ShootBall == null)
+        if (!World.Current.Shooting)
             return;
         Draw.Save();
         Draw.Translate(Position);
@@ -25,9 +25,9 @@ class ShootLine : Effect
     public override void Update(double dt)
     {
         base.Update(dt);
-        if (World.Current.ShootBall == null)
+        if (!World.Current.Shooting)
             return;
-        Position = World.Current.ShootBall.Position;
+        Position = World.Current.PlatformBall.Position;
         if (Rot)
             Dir = Vec2.Rotate(Dir, -Math.PI * dt / 1.2);
         else Dir = Vec2.Rotate(Dir, Math.PI * dt / 1.2);
@@ -42,6 +42,6 @@ class ShootLine : Effect
             Dir = new Vec2(Math.Cos(Math.PI / 4), Math.Sin(Math.PI / 4));
             Rot = false;
         }
-        World.Current.ShootBall.Vel = Dir.Unit;
+        World.Current.PlatformBall.Vel = Dir.Unit;
     }
 }

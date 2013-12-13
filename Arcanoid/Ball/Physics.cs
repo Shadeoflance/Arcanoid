@@ -7,7 +7,6 @@ partial class Ball
     public Vec2 Vel = new Vec2(1, 1).Unit;
     public Vec2 Position = Vec2.Zero;
     public static Vec2 Size = new Vec2(4, 4);
-    public bool OnPlatform = true;
     public static double Speed = 200;
     public Box Box { get { return new Box(Position, Size); } }
 
@@ -59,12 +58,6 @@ partial class Ball
 
     public void UpdatePhysics(double dt)
     {
-        if (OnPlatform)
-        {
-            var p = World.Current.Platform;
-            Position = p.Position + new Vec2(0, p.Size.Y + Size.Y);
-            return;
-        }
         Position += Vel * Speed * dt;
         if (Position.Y < World.Current.ScreenB)
             World.Current.Balls.Remove(this);

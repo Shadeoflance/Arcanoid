@@ -18,7 +18,7 @@ class Game : State
         World.Current.Balls.Clear();
 
         Ball b = new Ball();
-        World.Current.Balls.Add(b);
+        World.Current.PlatformBall = b;
     }
     public Game(int level)
     {
@@ -31,7 +31,7 @@ class Game : State
         
         Ball b = new Ball();
 
-        World.Current.Balls.Add(b);
+        World.Current.PlatformBall = b;
         CurrentLevel = level;
         World.Current.Blocks = GUtil.Load<Block[,]>("./Data/levels/lvl" + level.ToString() + ".dat");
 
@@ -44,7 +44,7 @@ class Game : State
         dt = Math.Min(dt, 1.0 / 60);
         base.Update(dt);
         World.Current.Update(dt);
-        if (World.Current.Balls.Count == 0)
+        if (World.Current.Balls.Count == 0 && World.Current.PlatformBall == null)
             Program.Manager.NextState = new GameOver();
     }
 
@@ -59,18 +59,18 @@ class Game : State
         base.KeyDown(key);
         if (key == Key.Space)
         {
-            if (World.Current.ShootBall != null)
+            if (World.Current.Shooting)
             {
-                World.Current.ShootBall.OnPlatform = false;
-                World.Current.ShootBall = null;
+                World.Current.Balls.Add(World.Current.PlatformBall);
+                World.Current.PlatformBall = null;
+                World.Current.Shooting = false;
                 return;
             }
-            foreach (var a in World.Current.Balls)
-                if (a.OnPlatform)
-                {
-                    World.Current.ShootBall = a;
-                    return;
-                }
+            if (World.Current.PlatformBall != null)
+            {
+                World.Current.Shooting = true;
+                return;
+            }
         }
     }
 }
