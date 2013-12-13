@@ -17,8 +17,7 @@ class Game : State
         World.Current.Platform.Position = new Vec2(0, -100);
         World.Current.Balls.Clear();
 
-        Ball b = new Ball();
-        World.Current.PlatformBall = b;
+        World.Current.PlatformBall = new Ball();
     }
     public Game(int level)
     {
@@ -28,10 +27,8 @@ class Game : State
         World.Current.Platform.Position = new Vec2(0, -100);
         World.Current.Platform.AddWidth();
         World.Current.Platform.AddWidth();
-        
-        Ball b = new Ball();
 
-        World.Current.PlatformBall = b;
+        World.Current.PlatformBall = new Ball();
         CurrentLevel = level;
         World.Current.Blocks = GUtil.Load<Block[,]>("./Data/levels/lvl" + level.ToString() + ".dat");
 
@@ -45,7 +42,12 @@ class Game : State
         base.Update(dt);
         World.Current.Update(dt);
         if (World.Current.Balls.Count == 0 && World.Current.PlatformBall == null)
-            Program.Manager.NextState = new GameOver();
+        {
+            World.Current.Lives--;
+            World.Current.PlatformBall = new Ball();
+            if(World.Current.Lives < 0)
+                Program.Manager.NextState = new GameOver();
+        }
     }
 
     public override void Render()

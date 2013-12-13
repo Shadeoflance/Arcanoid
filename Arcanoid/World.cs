@@ -14,6 +14,7 @@ class World : IRenderable, IUpdateable
     public Ball PlatformBall;
     public bool Shooting = false;
     public int Score = 0;
+    public int Lives = 1;
 
     bool BlockCheck()
     {
