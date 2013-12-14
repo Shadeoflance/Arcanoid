@@ -26,7 +26,7 @@ class Bonus : IUpdateable, IRenderable
 
     public static Bonus RandomBonus()
     {
-        switch(Program.Random.Next(7))
+        switch(Program.Random.Next(8))
         {
             case 0:
                 {
@@ -55,6 +55,10 @@ class Bonus : IUpdateable, IRenderable
             case 6:
                 {
                     return new SpeedUp();
+                }
+            case 7:
+                {
+                    return new ExtraLife();
                 }
         }
         return new ExtraBall();

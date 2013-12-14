@@ -63,6 +63,7 @@
     <Compile Include="Block\Block.cs" />
     <Compile Include="Block\Physics.cs" />
     <Compile Include="Bonus\Bonus.cs" />
+    <Compile Include="Bonus\ExtraLife.cs" />
     <Compile Include="Bonus\PlatfomStretch.cs" />
     <Compile Include="Bonus\ExtraBall.cs" />
     <Compile Include="Bonus\PlatformShrink.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Effect\BallHit.cs" />
     <Compile Include="Effect\BonusBlock.cs" />
     <Compile Include="Effect\Effect.cs" />
+    <Compile Include="Effect\Lives.cs" />
     <Compile Include="Effect\Score.cs" />
     <Compile Include="Effect\ScorePlus.cs" />
     <Compile Include="Effect\ShootLine.cs" />
@@ -117,6 +119,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\img\ExtraBall.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\img\ExtraLife.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\img\left.png">

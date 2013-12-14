@@ -21,7 +21,6 @@ class Game : State
     }
     public Game(int level)
     {
-        cam.Apply();
         World.Current = new World();
         World.Current.Platform = new Platform();
         World.Current.Platform.Position = new Vec2(0, -100);
@@ -34,6 +33,7 @@ class Game : State
 
         World.Current.Effects.Add(new ShootLine());
         World.Current.Effects.Add(new Score());
+        World.Current.Effects.Add(new Lives());
     }
 
     public override void Update(double dt)
@@ -52,6 +52,7 @@ class Game : State
 
     public override void Render()
     {
+        cam.Apply();
         Draw.Clear(Color.White);
         base.Render();
         World.Current.Render();
