@@ -23,7 +23,6 @@ class GameOver : State
     {
         cam.Apply();
         this.score = score;
-        toptext += score.ToString();
         Replay.text = "REPLAY";
         BackToMenu.text = "BACK TO MENU";
         HighScores.text = "HIGH SCORES";
@@ -113,6 +112,11 @@ class GameOver : State
         Draw.Scale(20);
         Draw.Color(new Color(0.4, 0.4, 0.4));
         Program.font.Render(toptext);
+        Draw.Save();
+        Draw.Color(new Color(1, 2, 1));
+        Draw.Translate(new Vec2(9, 0));
+        Program.font.Render(score.ToString());
+        Draw.Load();
         Draw.Translate(new Vec2(0, -2));
         Program.font.Render(bottext);
         Draw.Translate(new Vec2(9, 0));
