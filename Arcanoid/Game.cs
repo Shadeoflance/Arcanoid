@@ -34,6 +34,9 @@ class Game : State
         World.Current.Effects.Add(new ShootLine());
         World.Current.Effects.Add(new Score());
         World.Current.Effects.Add(new Lives());
+
+        Ball.Speed = 200;
+        Platform.Speed = 300;
     }
 
     public override void Update(double dt)
@@ -46,7 +49,7 @@ class Game : State
             World.Current.Lives--;
             World.Current.PlatformBall = new Ball();
             if(World.Current.Lives < 0)
-                Program.Manager.NextState = new GameOver();
+                Program.Manager.NextState = new GameOver(World.Current.Score);
         }
     }
 

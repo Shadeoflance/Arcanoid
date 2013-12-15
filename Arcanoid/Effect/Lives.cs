@@ -9,7 +9,6 @@ class Lives : Effect
         string text = "x" + World.Current.Lives.ToString();
         Draw.Save();
         Draw.Translate(new Vec2(World.Current.ScreenR - 21, World.Current.ScreenB - 2));
-        Program.font.Smooth = false;
         Draw.Scale(20);
         Draw.Color(new Color(0.7, 0.7, 0.7));
         Program.font.Render(text);

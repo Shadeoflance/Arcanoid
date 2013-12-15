@@ -2,7 +2,7 @@
 using VitPro.Engine;
 using VitPro;
 
-class PlatfomStretch : Bonus
+class PlatformStretch : Bonus
 {
     public override void Get()
     {

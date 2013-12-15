@@ -83,6 +83,7 @@
     <Compile Include="LevelCreator.cs" />
     <Compile Include="Menu\Button.cs" />
     <Compile Include="Menu\GameOver.cs" />
+    <Compile Include="Menu\HighScores.cs" />
     <Compile Include="Menu\Menu.cs" />
     <Compile Include="Menu\Victory.cs" />
     <Compile Include="Platform\Physics.cs" />

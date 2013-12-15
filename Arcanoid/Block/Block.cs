@@ -12,7 +12,7 @@ partial class Block : IRenderable
         Color color = new Color(0.5, 0.5, 0.5);
         if (HP == 2)
             color = new Color(0.7, 0.7, 0.7);
-        if (HP == 1)
+        if (HP <= 1)
             color = new Color(0.9, 0.9, 0.9);
         Draw.Rect(Position - Size, Position + Size, color);
         if(bonus)

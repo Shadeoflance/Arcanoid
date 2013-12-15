@@ -2,7 +2,7 @@
 using VitPro.Engine;
 using VitPro;
 
-class PlatfomShrink : Bonus
+class PlatformShrink : Bonus
 {
     public override void Get()
     {

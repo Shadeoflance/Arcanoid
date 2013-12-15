@@ -35,7 +35,7 @@ class Button : IRenderable
         Draw.Rect(Position, Position + Size, color);
         Draw.Save();
         Draw.Translate(Position);
-        Draw.Scale(20);
+        Draw.Scale(Size.Y - 2);
         Program.font.Render(text);
         Draw.Load();
     }

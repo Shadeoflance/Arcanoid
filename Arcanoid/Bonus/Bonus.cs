@@ -34,11 +34,11 @@ class Bonus : IUpdateable, IRenderable
                 }
             case 1:
                 {
-                    return new PlatfomStretch();
+                    return new PlatformStretch();
                 }
             case 2:
                 {
-                    return new PlatfomShrink();
+                    return new PlatformShrink();
                 }
             case 3:
                 {
