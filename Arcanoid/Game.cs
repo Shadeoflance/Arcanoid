@@ -45,6 +45,7 @@ class Game : State
 
     public override void Update(double dt)
     {
+        dt = Math.Min(dt, 1.0 / 60);
         base.Update(dt);
         World.Current.Update(dt);
         if (World.Current.Balls.Count == 0 && World.Current.PlatformBall == null)
