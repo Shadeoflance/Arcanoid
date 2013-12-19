@@ -22,6 +22,7 @@ class Game : State
 
         World.Current.PlatformBall = new Ball();
     }
+
     public Game(int level)
     {
         World.Current = new World();
@@ -44,7 +45,6 @@ class Game : State
 
     public override void Update(double dt)
     {
-        dt = Math.Min(dt, 1.0 / 60);
         base.Update(dt);
         World.Current.Update(dt);
         if (World.Current.Balls.Count == 0 && World.Current.PlatformBall == null)
@@ -92,6 +92,7 @@ class Program
     static void Main()
     {
         App.Fullscreen = false;
+        App.VSync = true;
         font.Smooth = false;
         App.Run(Manager);
     }
