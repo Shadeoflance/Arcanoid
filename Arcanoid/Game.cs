@@ -12,7 +12,10 @@ class Game : State
     {
         CurrentLevel++;
         if (CurrentLevel > 10)
+        {
             Program.Manager.NextState = new Victory();
+            return;
+        }
         World.Current.Blocks = GUtil.Load<Block[,]>("./Data/levels/lvl" + CurrentLevel.ToString() + ".dat");
         World.Current.Platform.Position = new Vec2(0, -100);
         World.Current.Balls.Clear();
