@@ -16,6 +16,8 @@ class World : IRenderable, IUpdateable
     public int Score = 0;
     public int Lives = 1;
 
+    ParticleGen Part = new ParticleGen();
+
     bool BlockCheck()
     {
         foreach (var a in Blocks)
@@ -113,6 +115,7 @@ class World : IRenderable, IUpdateable
 
     public void Update(double dt)
     {
+        Part.Update(dt);
         Balls.Refresh();
         Bonuses.Refresh();
         Effects.Refresh();
@@ -144,6 +147,7 @@ class World : IRenderable, IUpdateable
 
     public void Render()
     {
+        Part.Render();
         Platform.Render();
         Balls.Render();
         foreach (Block a in Blocks)

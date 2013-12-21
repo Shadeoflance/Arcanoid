@@ -61,7 +61,10 @@
     <Compile Include="Ball\Ball.cs" />
     <Compile Include="Ball\Physics.cs" />
     <Compile Include="Block\Block.cs" />
+    <Compile Include="Block\BlockDeath.cs" />
     <Compile Include="Block\InvBlock.cs" />
+    <Compile Include="Block\Particle.cs" />
+    <Compile Include="Block\ParticleGen.cs" />
     <Compile Include="Block\Physics.cs" />
     <Compile Include="Bonus\Bonus.cs" />
     <Compile Include="Bonus\ExtraLife.cs" />

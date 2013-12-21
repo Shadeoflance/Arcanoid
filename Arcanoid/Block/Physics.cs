@@ -32,6 +32,11 @@ partial class Block
             Bonus b = Bonus.RandomBonus();
             b.Position = Position;
             World.Current.Bonuses.Add(b);
+            Death();
         }
+    }
+    public virtual void Death()
+    {
+
     }
 }
