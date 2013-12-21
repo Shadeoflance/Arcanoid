@@ -27,16 +27,19 @@ partial class Block
     public virtual void Hit()
     {
         HP--;
-        if (HP == 0 && bonus)
+        if (HP == 0)
         {
-            Bonus b = Bonus.RandomBonus();
-            b.Position = Position;
-            World.Current.Bonuses.Add(b);
             Death();
+            if (bonus)
+            {
+                Bonus b = Bonus.RandomBonus();
+                b.Position = Position;
+                World.Current.Bonuses.Add(b);
+            }
         }
     }
     public virtual void Death()
     {
-
+        World.Current.Effects.Add(new BlockDeath(this));
     }
 }

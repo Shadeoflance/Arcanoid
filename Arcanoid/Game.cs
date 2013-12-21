@@ -35,10 +35,10 @@ class Game : State
         CurrentLevel = level;
         World.Current.Blocks = GUtil.Load<Block[,]>("./Data/levels/lvl" + level.ToString() + ".dat");
 
-        for (int i = 2; i < 13; i++)
-            for (int j = 1; j < 14; j++)
-                if (World.Current.Blocks[i, j] != null)
-                    World.Current.Blocks[i, j] = new InvBlock(3);
+        //for (int i = 2; i < 13; i++)
+        //    for (int j = 1; j < 14; j++)
+        //        if (World.Current.Blocks[i, j] != null)
+        //            World.Current.Blocks[i, j] = new InvBlock(3);
 
         World.Current.Effects.Add(new ShootLine());
         World.Current.Effects.Add(new Score());
