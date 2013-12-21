@@ -125,11 +125,18 @@ class World : IRenderable, IUpdateable
                         Game.NextLevel();
                 }
         Effects.Update(dt);
+        if (Current.Balls.Count == 0 && Current.PlatformBall == null)
+        {
+            Current.Lives--;
+            if (Current.Lives < 0)
+                Program.Manager.NextState = new GameOver(Current.Score);
+            Current.PlatformBall = new Ball();
+        }
         if (PlatformBall != null)
         {
-            PlatformBall.Update(dt);
-            var p = World.Current.Platform;
+            var p = Current.Platform;
             World.Current.PlatformBall.Position = p.Position + new Vec2(0, p.Size.Y + Ball.Size.Y);
+            PlatformBall.Update(dt);
         }
         if (Shooting)
         {

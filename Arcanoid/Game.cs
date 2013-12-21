@@ -50,16 +50,9 @@ class Game : State
 
     public override void Update(double dt)
     {
-        dt = Math.Min(dt, 1.0 / 60);
+        dt = Math.Min(dt, 1d / 60);
         base.Update(dt);
         World.Current.Update(dt);
-        if (World.Current.Balls.Count == 0 && World.Current.PlatformBall == null)
-        {
-            World.Current.Lives--;
-            World.Current.PlatformBall = new Ball();
-            if(World.Current.Lives < 0)
-                Program.Manager.NextState = new GameOver(World.Current.Score);
-        }
     }
 
     public override void Render()
