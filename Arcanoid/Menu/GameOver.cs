@@ -21,7 +21,6 @@ class GameOver : State
     Camera cam = new Camera(240);
     public GameOver(int score)
     {
-        cam.Apply();
         this.score = score;
         Replay.text = "REPLAY";
         BackToMenu.text = "BACK TO MENU";
@@ -103,6 +102,7 @@ class GameOver : State
 
     public override void Render()
     {
+        cam.Apply();
         Draw.Clear(Color.White);
         Replay.Render();
         BackToMenu.Render();

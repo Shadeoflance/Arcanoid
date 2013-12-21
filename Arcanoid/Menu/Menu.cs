@@ -15,7 +15,6 @@ class Menu : State
         HighScores.text = "HIGH SCORES";
         HighScores.Position = new Vec2(-75, 0);
         HighScores.Size = new Vec2(150, 22);
-        cam.Apply();
     }
 
     public override void MouseDown(MouseButton button, Vec2 pos)
@@ -30,6 +29,7 @@ class Menu : State
 
     public override void Render()
     {
+        cam.Apply();
         Draw.Clear(Color.White);
         StartButton.Render();
         HighScores.Render();

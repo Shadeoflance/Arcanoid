@@ -91,9 +91,11 @@
     <Compile Include="Menu\GameOver.cs" />
     <Compile Include="Menu\HighScores.cs" />
     <Compile Include="Menu\Menu.cs" />
+    <Compile Include="Menu\Pause.cs" />
     <Compile Include="Menu\Victory.cs" />
     <Compile Include="Platform\Physics.cs" />
     <Compile Include="Platform\Platform.cs" />
+    <Compile Include="StateManager.cs" />
     <Compile Include="World.cs" />
   </ItemGroup>
   <ItemGroup>

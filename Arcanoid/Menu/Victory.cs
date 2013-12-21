@@ -11,7 +11,6 @@ class Victory : State
 
     public Victory()
     {
-        cam.Apply();
         BackToMenu.text = "BACK TO MENU";
         BackToMenu.Position = new Vec2(-75, -100);
         BackToMenu.Size = new Vec2(150, 22);
@@ -25,6 +24,7 @@ class Victory : State
     }
     public override void Render()
     {
+        cam.Apply();
         Draw.Clear(Color.White);
         Draw.Save();
         Draw.Translate(new Vec2(-100, 50));

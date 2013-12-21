@@ -19,7 +19,7 @@ class Button : IRenderable
     {
         Vec2 pos = Mouse.Position;
         pos += new Vec2(0, -240);
-        pos = new Vec2(pos.X, -pos.Y);
+        pos = new Vec2(pos.X, pos.Y);
         pos -= new Vec2(320, 0);
         pos /= 2;
         if (pos.X < Position.X + Size.X && pos.X > Position.X && pos.Y < Position.Y + Size.Y && pos.Y > Position.Y)

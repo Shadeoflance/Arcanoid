@@ -19,7 +19,6 @@ class HighScores : State
         
         if(System.IO.File.Exists("./Data/HighScores.dat"))
             HS = GUtil.Load<List<Tuple<string, int>>>("./Data/HighScores.dat");
-        cam.Apply();
     }
 
     public override void MouseDown(MouseButton button, Vec2 pos)
@@ -32,6 +31,7 @@ class HighScores : State
 
     public override void Render()
     {
+        cam.Apply();
         Draw.Clear(Color.White);
         Draw.Save();
         Draw.Translate(new Vec2(-130, 70));

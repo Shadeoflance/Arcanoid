@@ -131,8 +131,6 @@ class World : IRenderable, IUpdateable
         if (Current.Balls.Count == 0 && Current.PlatformBall == null)
         {
             Current.Lives--;
-            if (Current.Lives < 0)
-                Program.Manager.NextState = new GameOver(Current.Score);
             Current.PlatformBall = new Ball();
         }
         if (PlatformBall != null)

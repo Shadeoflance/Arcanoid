@@ -56,6 +56,8 @@ class Game : State
         dt = Math.Min(dt, 1d / 60);
         base.Update(dt);
         World.Current.Update(dt);
+        if (World.Current.Lives < 0)
+            StateManager.NextState = new GameOver(World.Current.Score);
     }
 
     public override void Render()
@@ -83,18 +85,26 @@ class Game : State
                 return;
             }
         }
+        if (key == Key.Escape)
+        {
+            Texture tex = new Texture(Draw.Width, Draw.Height);
+            Draw.BeginTexture(tex);
+            Render();
+            Draw.EndTexture();
+            StateManager.PushState(new Pause(tex));
+        }
     }
 }
 
 class Program
 {
     public static Random Random = new Random();
-    public static StateManager Manager = new StateManager(new Menu());
+    public static StateManager Manager = new MyManager(new Menu());
     public static Font font = new Font("./Data/font.TTF", 50, FontStyle.Bold);
     static void Main()
     {
         App.Fullscreen = false;
-        App.VSync = true;
+        //App.VSync = true;
         font.Smooth = false;
         App.Run(Manager);
     }
