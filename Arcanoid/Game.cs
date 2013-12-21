@@ -38,7 +38,10 @@ class Game : State
         //for (int i = 2; i < 13; i++)
         //    for (int j = 1; j < 14; j++)
         //        if (World.Current.Blocks[i, j] != null)
-        //            World.Current.Blocks[i, j] = new InvBlock(3);
+        //        {
+        //            World.Current.Blocks[i, j] = new SolidBlock();
+        //            break;
+        //        }
 
         World.Current.Effects.Add(new ShootLine());
         World.Current.Effects.Add(new Score());

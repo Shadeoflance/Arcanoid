@@ -75,10 +75,13 @@ class World : IRenderable, IUpdateable
                             b.Hit();
                             Effects.Add(new BallHit(a.Position, a.Box.Collide(b.Box)));
                             a.Collision(a.Box.Collide(b.Box));
-                            World.Current.Effects.Add(new ScorePlus(a));
-                            Score += a.Streak * Balls.Count;
-                            if (a.Streak != 1024)
-                                a.Streak *= 2;
+                            if (b.GetType() != typeof(SolidBlock))
+                            {
+                                World.Current.Effects.Add(new ScorePlus(a));
+                                Score += a.Streak * Balls.Count;
+                                if (a.Streak != 1024)
+                                    a.Streak *= 2;
+                            }
                             switch (h)
                             {
                                 case 0:
@@ -134,9 +137,9 @@ class World : IRenderable, IUpdateable
         }
         if (PlatformBall != null)
         {
-            var p = Current.Platform;
-            World.Current.PlatformBall.Position = p.Position + new Vec2(0, p.Size.Y + Ball.Size.Y);
             PlatformBall.Update(dt);
+            var p = Current.Platform;
+            Current.PlatformBall.Position = p.Position + new Vec2(0, p.Size.Y + Ball.Size.Y);
         }
         if (Shooting)
         {

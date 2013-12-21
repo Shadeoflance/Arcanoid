@@ -66,6 +66,7 @@
     <Compile Include="Block\Particle.cs" />
     <Compile Include="Block\ParticleGen.cs" />
     <Compile Include="Block\Physics.cs" />
+    <Compile Include="Block\SolidBlock.cs" />
     <Compile Include="Bonus\Bonus.cs" />
     <Compile Include="Bonus\ExtraLife.cs" />
     <Compile Include="Bonus\PlatfomStretch.cs" />
