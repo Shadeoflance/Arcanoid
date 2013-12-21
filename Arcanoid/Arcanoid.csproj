@@ -61,6 +61,7 @@
     <Compile Include="Ball\Ball.cs" />
     <Compile Include="Ball\Physics.cs" />
     <Compile Include="Block\Block.cs" />
+    <Compile Include="Block\InvBlock.cs" />
     <Compile Include="Block\Physics.cs" />
     <Compile Include="Bonus\Bonus.cs" />
     <Compile Include="Bonus\ExtraLife.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Effect\BallHit.cs" />
     <Compile Include="Effect\BonusBlock.cs" />
     <Compile Include="Effect\Effect.cs" />
+    <Compile Include="Effect\InvBlockHit.cs" />
     <Compile Include="Effect\Lives.cs" />
     <Compile Include="Effect\Score.cs" />
     <Compile Include="Effect\ScorePlus.cs" />

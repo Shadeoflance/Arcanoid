@@ -24,7 +24,6 @@ class LevelCreator : State
         int i = (int)Math.Floor((pos.X + 210) / 28), j = -(int)Math.Floor((pos.Y - 115) / 10);
         if (i > 13 || j > 13 || i < 1 || j < 1)
             return;
-        Vec2 p = new Vec2(i * 28 - 196, 120 - j * 10);
         if (button == MouseButton.Middle)
         {
             if (Blocks[i, j] == null)
@@ -40,17 +39,14 @@ class LevelCreator : State
         if (Blocks[i, j] == null)
         {
             Blocks[i, j] = new Block(1);
-            Blocks[i, j].Position = p;
         }
         else if (Blocks[i, j].HP == 1)
         {
             Blocks[i, j] = new Block(2);
-            Blocks[i, j].Position = p;
         }
         else if (Blocks[i, j].HP == 2)
         {
             Blocks[i, j] = new Block(3);
-            Blocks[i, j].Position = p;
         }
         else if (Blocks[i, j].HP == 3)
             Blocks[i, j] = null;

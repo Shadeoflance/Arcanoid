@@ -7,7 +7,7 @@ partial class Block : IRenderable
 {
     public bool bonus;
 
-    public void Render()
+    public virtual void Render()
     {
         Color color = new Color(0.5, 0.5, 0.5);
         if (HP == 2)
