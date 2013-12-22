@@ -46,6 +46,7 @@ class Game : State
         World.Current.Effects.Add(new ShootLine());
         World.Current.Effects.Add(new Score());
         World.Current.Effects.Add(new Lives());
+        World.Current.Bonuses.Add(new SpeedDown());
 
         Ball.Speed = 200;
         Platform.Speed = 300;

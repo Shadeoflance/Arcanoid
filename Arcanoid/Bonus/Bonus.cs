@@ -10,16 +10,23 @@ class Bonus : IUpdateable, IRenderable
     public Vec2 Size = new Vec2(5, 5);
     public Vec2 Position;
     double Speed = 100;
+    public double Timer = 0;
+    public double Duration = -1;
 
     public virtual void Get()
-    { }
+    {
+        Alive = false;
+    }
+    public virtual void Runout()
+    {
+        World.Current.Bonuses.Remove(this);
+    }
 
     void Collision()
     {
         Box box = new Box(Position, Size);
         if (box.CollideBool(World.Current.Platform.Box))
         {
-            Alive = false;
             Get();
         }
     }
@@ -64,8 +71,15 @@ class Bonus : IUpdateable, IRenderable
         return new ExtraBall();
     }
 
-    public void Update(double dt)
+    public virtual void Update(double dt)
     {
+        if (!Alive)
+        {
+            Timer += dt;
+            if (Duration == -1 || Timer > Duration)
+                Runout();
+            return;
+        }
         Position += new Vec2(0, -Speed) * dt;
         Collision();
     }

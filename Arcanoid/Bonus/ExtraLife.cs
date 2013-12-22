@@ -6,12 +6,15 @@ class ExtraLife : Bonus
 {
     public override void Get()
     {
+        base.Get();
         World.Current.Lives++;
     }
 
     Texture Tex = new Texture("Data/img/ExtraLife.png");
     public override void Render()
     {
+        if (!Alive)
+            return;
         base.Render();
         Draw.Save();
         Draw.Translate(Position - Size);

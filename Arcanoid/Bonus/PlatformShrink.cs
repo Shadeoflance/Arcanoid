@@ -13,6 +13,8 @@ class PlatformShrink : Bonus
     Texture Tex = new Texture("Data/img/PlatformShrink.png");
     public override void Render()
     {
+        if (!Alive)
+            return;
         base.Render();
         Draw.Save();
         Draw.Translate(Position - Size);

@@ -15,6 +15,8 @@ class ExtraBall : Bonus
     Texture Tex = new Texture("Data/img/ExtraBall.png");
     public override void Render()
     {
+        if (!Alive)
+            return;
         base.Render();
         Draw.Save();
         Draw.Translate(Position - Size);
@@ -22,4 +24,5 @@ class ExtraBall : Bonus
         Tex.Render();
         Draw.Load();
     }
+    
 }

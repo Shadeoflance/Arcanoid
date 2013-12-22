@@ -15,6 +15,7 @@ class World : IRenderable, IUpdateable
     public bool Shooting = false;
     public int Score = 0;
     public int Lives = 1;
+    
 
     bool BlockCheck()
     {
@@ -109,9 +110,6 @@ class World : IRenderable, IUpdateable
                     }
                 }
         }
-        foreach (var a in Bonuses)
-            if (!a.Alive)
-                Bonuses.Remove(a);
     }
     double t = 0;
     public void Update(double dt)
@@ -171,5 +169,11 @@ class World : IRenderable, IUpdateable
         Effects.Render();
         if (PlatformBall != null)
             PlatformBall.Render();
+        Draw.Save();
+        new Camera(10).Apply();
+        Draw.Color(Color.Black);
+        Draw.Translate(new Vec2(2, -5));
+        Program.font.Render(Ball.Speed.ToString());
+        Draw.Load();
     }
 }
