@@ -52,15 +52,9 @@ class Game : State
         Platform.Speed = 300;
     }
 
-    double pause = 0;
     public override void Update(double dt)
     {
         dt = Math.Min(dt, 1d / 60);
-        if (pause > 0)
-        {
-            pause -= dt;
-            return;
-        }
         base.Update(dt);
         World.Current.Update(dt);
         if (World.Current.Lives < 0)
@@ -98,7 +92,6 @@ class Game : State
             Draw.BeginTexture(tex);
             Render();
             Draw.EndTexture();
-            pause = 0.3;
             StateManager.PushState(new Pause(tex));
         }
     }

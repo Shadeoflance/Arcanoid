@@ -12,7 +12,8 @@ class MyManager : StateManager
 
     public override void Update(double dt)
     {
-        base.Update(dt);
+        if(t == 0)
+            base.Update(dt);
         t -= 5 * dt;
         if (t < 0)
             t = 0;
