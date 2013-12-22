@@ -57,7 +57,7 @@ class GameOver : State
             {
                 HS.Add(new Tuple<string, int>(name, score));
                 GUtil.Dump(HS, "./Data/HighScores.dat");
-                Program.Manager.NextState = new HighScores();
+                StateManager.NextState = new HighScores();
                 return;
             }
             for (int i = 0; i <= HS.Count; i++)
@@ -68,7 +68,7 @@ class GameOver : State
                     {
                         HS.Add(new Tuple<string, int>(name, score));
                         GUtil.Dump(HS, "./Data/HighScores.dat");
-                        Program.Manager.NextState = new HighScores();
+                        StateManager.NextState = new HighScores();
                         return;
                     }
                     else return;
@@ -78,7 +78,7 @@ class GameOver : State
                     {
                         HS.Insert(i, new Tuple<string, int>(name, score));
                         GUtil.Dump(HS, "./Data/HighScores.dat");
-                        Program.Manager.NextState = new HighScores();
+                        StateManager.NextState = new HighScores();
                         return;
                     }
             }

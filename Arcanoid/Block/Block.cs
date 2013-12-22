@@ -18,4 +18,9 @@ partial class Block : IRenderable
         if(bonus)
             Draw.Circle(Position + Size - new Vec2(2, 2), 1, Color.White); 
     }
+    public virtual Block Copy()
+    {
+        var b = new Block(HP);
+        return b;
+    }
 }

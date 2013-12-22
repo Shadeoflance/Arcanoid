@@ -2,6 +2,7 @@
 using VitPro.Engine;
 using System;
 
+[Serializable]
 class InvBlock : Block
 {
     public InvBlock(int hp)
@@ -17,6 +18,11 @@ class InvBlock : Block
             b.Position = Position;
             World.Current.Bonuses.Add(b);
         }
+    }
+    public override Block Copy()
+    {
+        var b = new InvBlock(HP);
+        return b;
     }
     public override void Render()
     {

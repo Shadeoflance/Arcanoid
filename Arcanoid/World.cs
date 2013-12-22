@@ -19,7 +19,7 @@ class World : IRenderable, IUpdateable
     bool BlockCheck()
     {
         foreach (var a in Blocks)
-            if (a != null)
+            if (a != null && (a.GetType() != typeof(SolidBlock)))
                 return false;
         return true;
     }
@@ -113,7 +113,7 @@ class World : IRenderable, IUpdateable
             if (!a.Alive)
                 Bonuses.Remove(a);
     }
-
+    double t = 0;
     public void Update(double dt)
     {
         Balls.Refresh();
@@ -142,6 +142,16 @@ class World : IRenderable, IUpdateable
         if (Shooting)
         {
             return;
+        }
+        t += dt;
+        if (t > 10)
+        {
+            t = 12;
+            foreach (var a in Blocks)
+            {
+                if (a != null && a.GetType() == typeof(InvBlock))
+                    Effects.Add(new InvBlockHit(a));
+            }
         }
         Platform.Update(dt);
         Balls.Update(dt);

@@ -111,7 +111,7 @@ class Program
     static void Main()
     {
         App.Fullscreen = false;
-        //App.VSync = true;
+        App.VSync = false;
         font.Smooth = false;
         App.Run(Manager);
     }

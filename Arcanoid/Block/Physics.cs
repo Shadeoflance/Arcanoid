@@ -11,7 +11,8 @@ partial class Block
         {
             for (int i = 2; i < 13; i++)
                 for (int j = 1; j < 14; j++)
-                    if (World.Current.Blocks[i, j] == this)
+                    if ((World.Current != null && World.Current.Blocks[i, j] == this) 
+                        || (LevelCreator.Blocks != null && LevelCreator.Blocks[i, j] == this))
                         return new Vec2(i * 28 - 196, 120 - j * 10);
             return Vec2.Zero;
         }

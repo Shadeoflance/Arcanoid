@@ -2,6 +2,7 @@
 using VitPro.Engine;
 using System;
 
+[Serializable]
 class SolidBlock : Block
 {
     public SolidBlock()
@@ -9,6 +10,12 @@ class SolidBlock : Block
     { }
 
     public override void Hit() { }
+
+    public override Block Copy()
+    {
+        var b = new SolidBlock();
+        return b;
+    }
 
     public override void Render()
     {
