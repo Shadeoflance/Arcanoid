@@ -111,7 +111,7 @@ class World : IRenderable, IUpdateable
                 }
         }
     }
-    double t = 0;
+    double t = 11;
     public void Update(double dt)
     {
         Balls.Refresh();
@@ -142,13 +142,13 @@ class World : IRenderable, IUpdateable
             return;
         }
         t += dt;
-        if (t > 10)
+        if (t > 12)
         {
-            t = 12;
+            t = 0;
             foreach (var a in Blocks)
             {
                 if (a != null && a.GetType() == typeof(InvBlock))
-                    Effects.Add(new InvBlockHit(a));
+                    Effects.Add(new InvBlockHit(a, true));
             }
         }
         Platform.Update(dt);
@@ -169,11 +169,5 @@ class World : IRenderable, IUpdateable
         Effects.Render();
         if (PlatformBall != null)
             PlatformBall.Render();
-        Draw.Save();
-        new Camera(10).Apply();
-        Draw.Color(Color.Black);
-        Draw.Translate(new Vec2(2, -5));
-        Program.font.Render(Ball.Speed.ToString());
-        Draw.Load();
     }
 }

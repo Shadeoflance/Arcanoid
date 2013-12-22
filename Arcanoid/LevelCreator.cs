@@ -9,7 +9,7 @@ class LevelCreator : State
 
     public LevelCreator()
     {
-        Blocks = GUtil.Load<Block[,]>("./Data/levels/lvl1.dat");
+        Blocks = GUtil.Load<Block[,]>("./Data/levels/lvl10.dat");
     }
 
     Block Current = new Block(1);
