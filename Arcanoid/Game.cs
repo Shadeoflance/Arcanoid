@@ -104,7 +104,9 @@ class Program
     static void Main()
     {
         App.Fullscreen = false;
-        App.VSync = false;
+#if !DEBUG
+        App.VSync = true;
+#endif
         font.Smooth = false;
         App.Run(Manager);
     }

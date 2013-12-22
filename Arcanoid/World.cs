@@ -111,7 +111,7 @@ class World : IRenderable, IUpdateable
                 }
         }
     }
-    double t = 11;
+    double t = 0;
     public void Update(double dt)
     {
         Balls.Refresh();
