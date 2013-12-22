@@ -11,9 +11,9 @@ class ScorePlus : Effect
         this.b = b;
         LifeTime = 1.2;
         Position = b.Position;
-        double t = 10;
+        double t = 15;
         Streak = b.Streak;
-        switch(Program.Random.Next(4))
+        switch(Program.Random.Next(3))
         {
             case 0:
                 {
@@ -28,11 +28,6 @@ class ScorePlus : Effect
             case 2:
                 {
                     Position += new Vec2(0, -t);
-                    break;
-                }
-            case 3:
-                {
-                    Position += new Vec2(-t, 0);
                     break;
                 }
         }

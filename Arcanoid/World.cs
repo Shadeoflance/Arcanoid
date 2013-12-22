@@ -30,17 +30,11 @@ class World : IRenderable, IUpdateable
         foreach (var a in Balls)
         {
             if (a.Position.X > ScreenR - Ball.Size.Length)
-            {
                 a.Collision(1);
-            }
             if (a.Position.X < ScreenL + Ball.Size.Length)
-            {
                 a.Collision(3);
-            }
             if (a.Position.Y > ScreenT - Ball.Size.Length)
-            {
                 a.Collision(0);
-            }
 
             if (a.Box.Collide(Platform.Box) != -1)
             {
@@ -106,6 +100,15 @@ class World : IRenderable, IUpdateable
                                         break;
                                     }
                             }
+                            if (b.HP == 0)
+                            {
+                                Blocks[i, j] = null;
+                                if (BlockCheck())
+                                {
+                                    Game.NextLevel();
+                                    return;
+                                }
+                            }
                         }
                     }
                 }
@@ -117,14 +120,6 @@ class World : IRenderable, IUpdateable
         Balls.Refresh();
         Bonuses.Refresh();
         Effects.Refresh();
-        for (int i = 1; i < Blocks.GetUpperBound(0); i++)
-            for (int j = 1; j <= Blocks.GetUpperBound(1); j++)
-                if (Blocks[i, j] != null && Blocks[i, j].HP == 0)
-                {
-                    Blocks[i, j] = null;
-                    if (BlockCheck())
-                        Game.NextLevel();
-                }
         Effects.Update(dt);
         if (Current.Balls.Count == 0 && Current.PlatformBall == null)
         {

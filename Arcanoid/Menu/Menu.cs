@@ -22,7 +22,7 @@ class Menu : State
         if (button != MouseButton.Left)
             return;
         if (StartButton.Hit())
-            StateManager.NextState = new Game(10);
+            StateManager.NextState = new Game(1);
         if (HighScores.Hit())
             StateManager.NextState = new HighScores();
     }

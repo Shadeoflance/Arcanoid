@@ -15,7 +15,6 @@ class InvBlockHit : Effect
     bool bonus;
     public override void Render()
     {
-
         double Fade;
         if (Passive)
             Fade = Math.Abs(Math.Sin(Time * Math.PI) / 3) / 2;

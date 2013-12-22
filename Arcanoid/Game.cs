@@ -19,6 +19,7 @@ class Game : State
         World.Current.Blocks = GUtil.Load<Block[,]>("./Data/levels/lvl" + CurrentLevel.ToString() + ".dat");
         World.Current.Platform.Position = new Vec2(0, -100);
         World.Current.Balls.Clear();
+        World.Current.Balls.Refresh();
 
         World.Current.PlatformBall = new Ball();
     }
@@ -37,11 +38,8 @@ class Game : State
 
         //for (int i = 2; i < 13; i++)
         //    for (int j = 1; j < 14; j++)
-        //        if (World.Current.Blocks[i, j] != null)
-        //        {
-        //            World.Current.Blocks[i, j] = new SolidBlock();
-        //            break;
-        //        }
+        //        World.Current.Blocks[i, j] = null;
+        //World.Current.Blocks[8, 3] = new Block(1);
 
         World.Current.Effects.Add(new ShootLine());
         World.Current.Effects.Add(new Score());
@@ -93,6 +91,8 @@ class Game : State
             Draw.EndTexture();
             StateManager.PushState(new Pause(tex));
         }
+        if (key == Key.R)
+            StateManager.NextState = new Game(1);
     }
 }
 
