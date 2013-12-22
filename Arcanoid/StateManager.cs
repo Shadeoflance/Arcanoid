@@ -43,10 +43,14 @@ class MyManager : StateManager
         tex.RemoveAlpha();
 
         Draw.Save();
-        Draw.Scale(2);
+        Draw.Save();
+        Draw.Scale(2 + t);
         Draw.Align(0.5, 0.5);
 
         tex.Render();
+        Draw.Load();
+        Draw.Scale(3 - t);
+        Draw.Align(0.5, 0.5);
         if (back != null)
         {
             Draw.Color(1, 1, 1, t);

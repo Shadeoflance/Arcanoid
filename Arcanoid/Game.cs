@@ -55,7 +55,13 @@ class Game : State
         base.Update(dt);
         World.Current.Update(dt);
         if (World.Current.Lives < 0)
-            StateManager.NextState = new GameOver(World.Current.Score);
+        {
+            Texture tex = new Texture(Draw.Width, Draw.Height);
+            Draw.BeginTexture(tex);
+            Render();
+            Draw.EndTexture();
+            StateManager.NextState = new GameOver(World.Current.Score, tex);
+        }
     }
 
     public override void Render()

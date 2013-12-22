@@ -19,8 +19,10 @@ class GameOver : State
     int score;
 
     Camera cam = new Camera(240);
-    public GameOver(int score)
+    Texture tex;
+    public GameOver(int score, Texture tex)
     {
+        this.tex = tex;
         this.score = score;
         Replay.text = "REPLAY";
         BackToMenu.text = "BACK TO MENU";
@@ -102,8 +104,14 @@ class GameOver : State
 
     public override void Render()
     {
-        cam.Apply();
         Draw.Clear(Color.White);
+        //Draw.Save();
+        //Draw.Color(0.5, 0.5, 0.5);
+        //Draw.Scale(3);
+        //Draw.Align(0.5, 0.5);
+        //tex.Render();
+        //Draw.Load();
+        cam.Apply();
         Replay.Render();
         BackToMenu.Render();
         HighScores.Render();
