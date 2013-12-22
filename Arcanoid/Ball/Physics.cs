@@ -56,10 +56,20 @@ partial class Ball
         Streak = 1;
     }
 
+    public double Fade = 1;
     public void UpdatePhysics(double dt)
     {
+        if (Position.Y < World.Current.ScreenB + Ball.Size.Y)
+        {
+            Die(dt);
+            return;
+        }
         Position += Vel * Speed * dt;
-        if (Position.Y < World.Current.ScreenB)
+    }
+    public void Die(double dt)
+    {
+        Fade -= dt * 2;
+        if (Fade < 0)
             World.Current.Balls.Remove(this);
     }
 }

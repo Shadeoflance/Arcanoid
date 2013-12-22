@@ -5,6 +5,9 @@ using System;
 partial class Ball : IUpdateable, IRenderable
 {
     public int Streak = 1;
+    Color Color;
+
+    public Ball() { Color = new Color(0, 1, 0, Fade); }
 
     public void Update(double dt)
     {
@@ -13,6 +16,7 @@ partial class Ball : IUpdateable, IRenderable
 
     public void Render()
     {
-        Draw.Circle(Position, Size.X, Color.Green);
+        Color = new Color(0, 1, 0, Fade);
+        Draw.Circle(Position, Size.X, Color);
     }
 }
