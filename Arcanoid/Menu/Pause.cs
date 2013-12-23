@@ -24,5 +24,11 @@ class Pause : State
         Draw.Color(0.5, 0.5, 0.5);
         Tex.Render();
         Draw.Load();
+        Draw.Save();
+        Draw.Color(Color.Black);
+        Draw.Scale(0.4);
+        Draw.Align(Program.font.Measure("PAUSE")/2, 0.5);
+        Program.font.Render("PAUSE");
+        Draw.Load();
     }
 }

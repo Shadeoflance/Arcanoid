@@ -29,7 +29,7 @@ class MyManager : StateManager
         }
     }
 
-    public void Close()
+    public new void Close()
     {
         PreviousState = CurrentState;
         CurrentState.Close();
