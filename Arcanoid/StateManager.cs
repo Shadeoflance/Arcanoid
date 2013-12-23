@@ -27,23 +27,13 @@ class MyManager : StateManager
         {
             back = tex.Copy();
         }
-    }
-
-    public new void Close()
-    {
-        PreviousState = CurrentState;
-        CurrentState.Close();
+        Previous = Current;
+        Current = CurrentState;
     }
 
     Texture tex = null, back = null;
 
-    IState PreviousState;
-
-    public void Push(State next, State previous)
-    {
-        base.PushState(next);
-        PreviousState = previous;
-    }
+    IState Previous, Current;
 
     void DefaultRender()
     {
@@ -86,7 +76,7 @@ class MyManager : StateManager
         Draw.EndTexture();
         tex.RemoveAlpha();
 
-        if (PreviousState != null && (CurrentState.GetType() == typeof(Pause) || PreviousState.GetType() == typeof(Pause)))
+        if (Previous != null && (Current is Pause || Previous is Pause))
         {
             PauseRender();
             return;

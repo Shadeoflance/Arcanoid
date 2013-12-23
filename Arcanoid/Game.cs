@@ -60,7 +60,7 @@ class Game : State
             Draw.BeginTexture(tex);
             Render();
             Draw.EndTexture();
-            Program.Manager.Push(new GameOver(World.Current.Score, tex), this);
+            StateManager.NextState = new GameOver(World.Current.Score, tex);
         }
     }
 
@@ -95,7 +95,7 @@ class Game : State
             Draw.BeginTexture(tex);
             Render();
             Draw.EndTexture();
-            Program.Manager.Push(new Pause(tex), this);
+            StateManager.PushState(new Pause(tex));
         }
         if (key == Key.R)
             StateManager.NextState = new Game(1);
