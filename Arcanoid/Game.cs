@@ -60,7 +60,7 @@ class Game : State
             Draw.BeginTexture(tex);
             Render();
             Draw.EndTexture();
-            StateManager.NextState = new GameOver(World.Current.Score, tex);
+            Program.Manager.Push(new GameOver(World.Current.Score, tex), this);
         }
     }
 
@@ -95,7 +95,7 @@ class Game : State
             Draw.BeginTexture(tex);
             Render();
             Draw.EndTexture();
-            StateManager.PushState(new Pause(tex));
+            Program.Manager.Push(new Pause(tex), this);
         }
         if (key == Key.R)
             StateManager.NextState = new Game(1);
@@ -105,7 +105,7 @@ class Game : State
 class Program
 {
     public static Random Random = new Random();
-    public static StateManager Manager = new MyManager(new Menu());
+    public static MyManager Manager = new MyManager(new Menu());
     public static Font font = new Font("./Data/font.TTF", 50, FontStyle.Bold);
     static void Main()
     {

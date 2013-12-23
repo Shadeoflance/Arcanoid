@@ -13,7 +13,7 @@ class Pause : State
     {
         base.KeyDown(key);
         if (key == Key.Escape)
-            Close();
+            Program.Manager.Close();
     }
     public override void Render()
     {

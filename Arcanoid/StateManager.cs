@@ -29,24 +29,28 @@ class MyManager : StateManager
         }
     }
 
+    public void Close()
+    {
+        PreviousState = CurrentState;
+        CurrentState.Close();
+    }
+
     Texture tex = null, back = null;
 
-    public override void Render()
+    IState PreviousState;
+
+    public void Push(State next, State previous)
     {
-        if (tex == null || tex.Width != Draw.Width || tex.Height != Draw.Height)
-            tex = new Texture(Draw.Width, Draw.Height);
-        Draw.BeginTexture(tex);
+        base.PushState(next);
+        PreviousState = previous;
+    }
 
-        base.Render();
-
-        Draw.EndTexture();
-        tex.RemoveAlpha();
-
+    void DefaultRender()
+    {
         Draw.Save();
         Draw.Save();
         Draw.Scale(2 + t);
         Draw.Align(0.5, 0.5);
-
         tex.Render();
         Draw.Load();
         Draw.Scale(3 - t);
@@ -56,7 +60,38 @@ class MyManager : StateManager
             Draw.Color(1, 1, 1, t);
             back.Render();
         }
-
         Draw.Load();
+    }
+
+    void PauseRender()
+    {
+        Draw.Save();
+        Draw.Scale(2);
+        Draw.Align(0.5, 0.5);
+        tex.Render();
+        if (back != null)
+        {
+            Draw.Color(1, 1, 1, t);
+            back.Render();
+        }
+        Draw.Load();
+    }
+
+    public override void Render()
+    {
+        if (tex == null || tex.Width != Draw.Width || tex.Height != Draw.Height)
+            tex = new Texture(Draw.Width, Draw.Height);
+        Draw.BeginTexture(tex);
+        base.Render();
+        Draw.EndTexture();
+        tex.RemoveAlpha();
+
+        if (PreviousState != null && (CurrentState.GetType() == typeof(Pause) || PreviousState.GetType() == typeof(Pause)))
+        {
+            PauseRender();
+            return;
+        }
+
+        DefaultRender();
     }
 }
