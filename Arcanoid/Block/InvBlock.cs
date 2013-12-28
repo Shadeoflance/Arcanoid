@@ -10,14 +10,8 @@ class InvBlock : Block
     { }
     public override void Hit()
     {
-        HP--;
+        base.Hit();
         World.Current.Effects.Add(new InvBlockHit(this));
-        if (HP == 0 && bonus)
-        {
-            Bonus b = Bonus.RandomBonus();
-            b.Position = Position;
-            World.Current.Bonuses.Add(b);
-        }
     }
     public override Block Copy()
     {

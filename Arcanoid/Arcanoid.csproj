@@ -87,6 +87,7 @@
     <Compile Include="Effect\Score.cs" />
     <Compile Include="Effect\ScorePlus.cs" />
     <Compile Include="Effect\ShootLine.cs" />
+    <Compile Include="Effect\FireWork.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="LevelCreator.cs" />
     <Compile Include="Menu\Button.cs" />

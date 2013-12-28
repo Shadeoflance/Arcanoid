@@ -31,6 +31,7 @@ class Button : IRenderable
 
     public void Render()
     {
+        new Camera(240).Apply();
         MouseOver();
         Draw.Rect(Position, Position + Size, color);
         Draw.Save();

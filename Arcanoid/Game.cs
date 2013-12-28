@@ -13,7 +13,7 @@ class Game : State
         CurrentLevel++;
         if (CurrentLevel > 10)
         {
-            Program.Manager.NextState = new Victory();
+            Program.Manager.NextState = new Victory(World.Current.Score);
             return;
         }
         World.Current.Blocks = GUtil.Load<Block[,]>("./Data/levels/lvl" + CurrentLevel.ToString() + ".dat");
@@ -39,7 +39,7 @@ class Game : State
         //for (int i = 2; i < 13; i++)
         //    for (int j = 1; j < 14; j++)
         //        World.Current.Blocks[i, j] = null;
-        //World.Current.Blocks[8, 8] = new Block(3);
+        //World.Current.Blocks[8, 8] = new Block(1);
 
         World.Current.Effects.Add(new ShootLine());
         World.Current.Effects.Add(new Score());
