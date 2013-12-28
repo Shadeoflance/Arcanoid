@@ -36,10 +36,10 @@ class Game : State
         CurrentLevel = level;
         World.Current.Blocks = GUtil.Load<Block[,]>("./Data/levels/lvl" + level.ToString() + ".dat");
 
-        for (int i = 2; i < 13; i++)
-            for (int j = 1; j < 14; j++)
-                World.Current.Blocks[i, j] = null;
-        World.Current.Blocks[8, 8] = new Block(3);
+        //for (int i = 2; i < 13; i++)
+        //    for (int j = 1; j < 14; j++)
+        //        World.Current.Blocks[i, j] = null;
+        //World.Current.Blocks[8, 8] = new Block(3);
 
         World.Current.Effects.Add(new ShootLine());
         World.Current.Effects.Add(new Score());
@@ -111,7 +111,7 @@ class Program
     {
         App.Fullscreen = false;
 #if !DEBUG
-        App.VSync = false;
+        App.VSync = true;
 #endif
         font.Smooth = false;
         App.Run(Manager);

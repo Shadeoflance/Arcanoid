@@ -17,7 +17,7 @@ class BonusGet : Effect
             double t = Program.Random.NextDouble(Math.PI / 6, Math.PI * 5 / 6);
             Dir = new Vec2(Math.Cos(t), Math.Sin(t));
             t = Program.Random.NextDouble(0.5, 1.2);
-            Particles.Add(new Particle(Position, Dir * 150 * t, 1.5, Color, (World.Current.Platform.Position - Position).Unit, 250));
+            Particles.Add(new Particle(Position, Dir * 150 * t, 1.5, Color, (World.Current.Platform.Position - Position).Unit, -1, 250));
         }
         Particles.Refresh();
     }

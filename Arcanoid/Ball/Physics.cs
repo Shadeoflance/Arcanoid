@@ -68,6 +68,8 @@ partial class Ball
     }
     public void Die(double dt)
     {
+        if (Fade == 1)
+            World.Current.Effects.Add(new BallDeath(Position));
         Fade -= dt * 2;
         if (Fade < 0)
             World.Current.Balls.Remove(this);

@@ -19,7 +19,7 @@ class BlockDeath : Effect
         {
             double t = Program.Random.NextDouble(0, Math.PI * 2);
             Dir = new Vec2(Math.Cos(t), Math.Sin(t));
-            Particles.Add(new Particle(Position, Dir * 150, 1.5, Color, new Vec2(0, -1), 300));
+            Particles.Add(new Particle(Position, Dir * 150, 1.5, Color, new Vec2(0, -1), -1, 300));
         }
         Particles.Refresh();
     }
