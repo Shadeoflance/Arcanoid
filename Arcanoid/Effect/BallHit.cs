@@ -5,15 +5,6 @@ using System.Collections.Generic;
 
 class BallHit : Effect
 {
-    class Particle : IUpdateable
-    {
-        public Vec2 Position, Vel;
-
-        public void Update(double dt)
-        {
-            Position += Vel * 20 * dt;
-        }
-    }
 
     Group<Particle> Particles = new Group<Particle>();
 
@@ -28,7 +19,7 @@ class BallHit : Effect
         }
         for (int i = 0; i < 5; i++)
         {
-            Particle w = new Particle();
+            Particle w = new Particle(Position, Vec2.Zero, 1, new Color(0.5, 0.5, 0.5), new Vec2(0, -100), 100);
             switch (Side)
             {
                 case 0:
@@ -53,8 +44,7 @@ class BallHit : Effect
                     }
             }
             w.Vel = w.Vel.Unit;
-            w.Vel *= Program.Random.NextDouble(0, 2);
-            w.Position = Position;
+            w.Vel *= Program.Random.NextDouble(30, 50);
             Particles.Add(w);
         }
         Particles.Refresh();
@@ -70,8 +60,7 @@ class BallHit : Effect
     {
         base.Render();
         foreach (var a in Particles)
-        {
-            Draw.Circle(a.Position, 1, new Color(1 - (LifeTime - Time), 1 - (LifeTime - Time), 1 - (LifeTime - Time)));
-        }
+            a.Color = new Color(0, 0, 0, LifeTime - Time);
+        Particles.Render();
     }
 }

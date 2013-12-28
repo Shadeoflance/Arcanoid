@@ -13,7 +13,6 @@ class Particle : IRenderable, IUpdateable
 
     public Particle(Vec2 pos, Vec2 vel, double size, Color color, Vec2 gravity, double g = 100)
     {
-        Gravitation = gravity * 10000;
         Position = pos;
         Vel = vel;
         Size = size;
