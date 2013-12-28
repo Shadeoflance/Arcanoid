@@ -7,6 +7,7 @@ class SpeedDown : Bonus
     public SpeedDown()
         : base()
     {
+        Bad = false;
         Duration = 20;
     }
 

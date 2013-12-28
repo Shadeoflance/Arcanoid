@@ -5,6 +5,7 @@ using VitPro.Engine;
 [Serializable]
 class ExtraBall : Bonus
 {
+    public ExtraBall() { Bad = false; }
     public override void Get()
     {
         base.Get();

@@ -44,6 +44,7 @@ class Game : State
         World.Current.Effects.Add(new ShootLine());
         World.Current.Effects.Add(new Score());
         World.Current.Effects.Add(new Lives());
+        World.Current.Bonuses.Add(new ExtraLife());
 
         Ball.Speed = 200;
         Platform.Speed = 300;
@@ -111,7 +112,7 @@ class Program
     {
         App.Fullscreen = false;
 #if !DEBUG
-        App.VSync = true;
+        App.VSync = false;
 #endif
         font.Smooth = false;
         App.Run(Manager);

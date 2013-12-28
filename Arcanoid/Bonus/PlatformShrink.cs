@@ -4,6 +4,7 @@ using VitPro;
 
 class PlatformShrink : Bonus
 {
+    public PlatformShrink() { Bad = true; }
     public override void Get()
     {
         base.Get();

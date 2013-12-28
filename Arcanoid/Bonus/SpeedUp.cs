@@ -8,6 +8,7 @@ class SpeedUp : Bonus
         : base()
     {
         Duration = 20;
+        Bad = true;
     }
     public override void Get()
     {

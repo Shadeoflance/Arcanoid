@@ -12,10 +12,12 @@ class Bonus : IUpdateable, IRenderable
     double Speed = 100;
     public double Timer = 0;
     public double Duration = -1;
+    public bool Bad;
 
     public virtual void Get()
     {
         Alive = false;
+        World.Current.Effects.Add(new BonusGet(Bad, Position));
     }
     public virtual void Runout()
     {

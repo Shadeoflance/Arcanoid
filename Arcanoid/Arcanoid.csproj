@@ -61,10 +61,10 @@
     <Compile Include="Ball\Ball.cs" />
     <Compile Include="Ball\Physics.cs" />
     <Compile Include="Block\Block.cs" />
-    <Compile Include="Block\BlockDeath.cs" />
+    <Compile Include="Effect\BlockDeath.cs" />
     <Compile Include="Block\InvBlock.cs" />
-    <Compile Include="Block\Particle.cs" />
-    <Compile Include="Block\ParticleGen.cs" />
+    <Compile Include="Effect\Particle.cs" />
+    <Compile Include="Effect\ParticleGen.cs" />
     <Compile Include="Block\Physics.cs" />
     <Compile Include="Block\SolidBlock.cs" />
     <Compile Include="Bonus\Bonus.cs" />
@@ -79,6 +79,7 @@
     <Compile Include="Box.cs" />
     <Compile Include="Effect\BallHit.cs" />
     <Compile Include="Effect\BonusBlock.cs" />
+    <Compile Include="Effect\BonusGet.cs" />
     <Compile Include="Effect\Effect.cs" />
     <Compile Include="Effect\InvBlockHit.cs" />
     <Compile Include="Effect\Lives.cs" />

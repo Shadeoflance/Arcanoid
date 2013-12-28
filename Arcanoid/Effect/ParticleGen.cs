@@ -28,7 +28,7 @@ class ParticleGen : IRenderable, IUpdateable
         T += dt;
         if (T >= 1 / PPS)
         {
-            Particles.Add(new Particle(Position, Dir * Force, 1, Color.Red));
+            Particles.Add(new Particle(Position, Dir * Force, 1, Color.Red, new Vec2(0, -1)));
             T = 0;
         }
         Particles.Refresh();

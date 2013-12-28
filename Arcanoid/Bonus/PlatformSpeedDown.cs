@@ -4,6 +4,7 @@ using VitPro;
 
 class PlatformSpeedDown : Bonus
 {
+    public PlatformSpeedDown() { Bad = true; }
     public override void Get()
     {
         base.Get();

@@ -4,6 +4,7 @@ using VitPro.Engine;
 
 class ExtraLife : Bonus
 {
+    public ExtraLife() { Bad = false; }
     public override void Get()
     {
         base.Get();

@@ -4,6 +4,7 @@ using VitPro;
 
 class PlatformStretch : Bonus
 {
+    public PlatformStretch() { Bad = false; }
     public override void Get()
     {
         base.Get();
