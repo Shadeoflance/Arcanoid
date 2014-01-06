@@ -1,5 +1,4 @@
-Arcanoid
-ToDo
+Arcanoid ToDo
 ========
 block hp 100 max
 ball damage varieties
