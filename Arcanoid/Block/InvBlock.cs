@@ -8,9 +8,9 @@ class InvBlock : Block
     public InvBlock(int hp)
         : base(hp)
     { }
-    public override void Hit()
+    public override void Hit(int damage)
     {
-        base.Hit();
+        base.Hit(damage);
         World.Current.Effects.Add(new InvBlockHit(this));
     }
     public override Block Copy()

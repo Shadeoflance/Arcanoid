@@ -9,7 +9,7 @@ class SolidBlock : Block
         : base(1)
     { }
 
-    public override void Hit() { }
+    public override void Hit(int damage) { }
 
     public override Block Copy()
     {

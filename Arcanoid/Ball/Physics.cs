@@ -6,7 +6,7 @@ partial class Ball
 {
     public Vec2 Vel = new Vec2(1, 1).Unit;
     public Vec2 Position = Vec2.Zero;
-    public static Vec2 Size = new Vec2(4, 4);
+    public Vec2 Size = new Vec2(4, 4);
     public static double Speed = 200;
     public Box Box { get { return new Box(Position, Size); } }
 
@@ -59,7 +59,7 @@ partial class Ball
     public double Fade = 1;
     public void UpdatePhysics(double dt)
     {
-        if (Position.Y < World.Current.ScreenB + Ball.Size.Y)
+        if (Position.Y < World.Current.ScreenB + Size.Y)
         {
             Die(dt);
             return;

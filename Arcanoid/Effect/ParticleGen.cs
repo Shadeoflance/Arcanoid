@@ -27,7 +27,7 @@ class ParticleGen : IRenderable, IUpdateable
         Fade = fade;
         Spread = spread;
         SpeedSpread = speedspread;
-        Gravity = new Vec2(0, -1);
+        Gravity = Vec2.Zero;
     }
 
     public void Render()

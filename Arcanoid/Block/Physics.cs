@@ -25,10 +25,10 @@ partial class Block
         HP = hp;
     }
 
-    public virtual void Hit()
+    public virtual void Hit(int damage)
     {
-        HP--;
-        if (HP == 0)
+        HP -= damage;
+        if (HP <= 0)
         {
             Death();
             if (bonus)

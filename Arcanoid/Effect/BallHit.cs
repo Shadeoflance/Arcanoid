@@ -14,7 +14,7 @@ class BallHit : Effect
         LifeTime = 0.5;
         foreach (var a in World.Current.Balls)
         {
-            Position += Ball.Size.X * Box.Side(Side);
+            Position += a.Size.X * Box.Side(Side);
             break;
         }
         for (int i = 0; i < 5; i++)

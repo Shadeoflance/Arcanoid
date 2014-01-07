@@ -15,7 +15,7 @@ class ShootLine : Effect
         Draw.Rotate(Dir.Arg);
         for (int i = 0; i < 5; i++)
         {
-            Draw.Rect(new Vec2(Ball.Size.X, -1) + new Vec2(i * 10, 0),
+            Draw.Rect(new Vec2(World.Current.PlatformBall.Size.X, -1) + new Vec2(i * 10, 0),
                 new Vec2(10, 1) + new Vec2(i * 10, 0),
                 new Color(0.5 + i * 0.1, 0.5 + i * 0.1, 0.5 + i * 0.1));
         }

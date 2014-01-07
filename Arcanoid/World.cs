@@ -29,11 +29,11 @@ class World : IRenderable, IUpdateable
     {
         foreach (var a in Balls)
         {
-            if (a.Position.X > ScreenR - Ball.Size.Length)
+            if (a.Position.X > ScreenR - a.Size.Length)
                 a.Collision(1);
-            if (a.Position.X < ScreenL + Ball.Size.Length)
+            if (a.Position.X < ScreenL + a.Size.Length)
                 a.Collision(3);
-            if (a.Position.Y > ScreenT - Ball.Size.Length)
+            if (a.Position.Y > ScreenT - a.Size.Length)
                 a.Collision(0);
 
             if (a.Box.Collide(Platform.Box) != -1)
@@ -67,7 +67,7 @@ class World : IRenderable, IUpdateable
                         
                         if (!sidebug)
                         {
-                            b.Hit();
+                            b.Hit(a.Damage);
                             Effects.Add(new BallHit(a.Position, a.Box.Collide(b.Box)));
                             a.Collision(a.Box.Collide(b.Box));
                             if (b.GetType() != typeof(SolidBlock))
@@ -81,26 +81,26 @@ class World : IRenderable, IUpdateable
                             {
                                 case 0:
                                     {
-                                        a.Position = new Vec2(a.Position.X, b.Position.Y + Block.Size.Y + Ball.Size.Y);
+                                        a.Position = new Vec2(a.Position.X, b.Position.Y + Block.Size.Y + a.Size.Y);
                                         break;
                                     }
                                 case 1:
                                     {
-                                        a.Position = new Vec2(b.Position.X + Block.Size.X + Ball.Size.X, a.Position.Y);
+                                        a.Position = new Vec2(b.Position.X + Block.Size.X + a.Size.X, a.Position.Y);
                                         break;
                                     }
                                 case 2:
                                     {
-                                        a.Position = new Vec2(a.Position.X, b.Position.Y - Block.Size.Y - Ball.Size.Y);
+                                        a.Position = new Vec2(a.Position.X, b.Position.Y - Block.Size.Y - a.Size.Y);
                                         break;
                                     }
                                 case 3:
                                     {
-                                        a.Position = new Vec2(b.Position.X - Block.Size.X - Ball.Size.X, a.Position.Y);
+                                        a.Position = new Vec2(b.Position.X - Block.Size.X - a.Size.X, a.Position.Y);
                                         break;
                                     }
                             }
-                            if (b.HP == 0)
+                            if (b.HP <= 0)
                             {
                                 Blocks[i, j] = null;
                                 if (BlockCheck())
@@ -130,7 +130,7 @@ class World : IRenderable, IUpdateable
         {
             PlatformBall.Update(dt);
             var p = Current.Platform;
-            Current.PlatformBall.Position = p.Position + new Vec2(0, p.Size.Y + Ball.Size.Y);
+            Current.PlatformBall.Position = p.Position + new Vec2(0, p.Size.Y + Current.PlatformBall.Size.Y);
         }
         if (Shooting)
         {
@@ -142,7 +142,7 @@ class World : IRenderable, IUpdateable
             t = 0;
             foreach (var a in Blocks)
             {
-                if (a != null && a.GetType() == typeof(InvBlock))
+                if (a != null && a is InvBlock)
                     Effects.Add(new InvBlockHit(a, true));
             }
         }
