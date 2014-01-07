@@ -121,16 +121,16 @@ class World : IRenderable, IUpdateable
         Bonuses.Refresh();
         Effects.Refresh();
         Effects.Update(dt);
-        if (Current.Balls.Count == 0 && Current.PlatformBall == null)
+        if (Balls.Count == 0 && PlatformBall == null)
         {
-            Current.Lives--;
-            Current.PlatformBall = new Ball();
+            Lives--;
+            PlatformBall = new Ball();
         }
         if (PlatformBall != null)
         {
             PlatformBall.Update(dt);
-            var p = Current.Platform;
-            Current.PlatformBall.Position = p.Position + new Vec2(0, p.Size.Y + Current.PlatformBall.Size.Y);
+            var p = Platform;
+            PlatformBall.Position = p.Position + new Vec2(0, p.Size.Y + PlatformBall.Size.Y);
         }
         if (Shooting)
         {

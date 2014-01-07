@@ -9,14 +9,19 @@ partial class Block : IRenderable
 
     public virtual void Render()
     {
-        Color color = new Color(0.5, 0.5, 0.5);
-        if (HP == 2)
-            color = new Color(0.7, 0.7, 0.7);
-        if (HP <= 1)
-            color = new Color(0.9, 0.9, 0.9);
+        double t = (1 - 0.01 * HP) * 4 / 5;
+        Color color = new Color(t, t, t);
         Draw.Rect(Position - Size, Position + Size, color);
         if(bonus)
-            Draw.Circle(Position + Size - new Vec2(2, 2), 1, Color.White); 
+            Draw.Circle(Position + Size - new Vec2(2, 2), 1, Color.White);
+        Draw.Save();
+        new Camera(240).Apply();
+        Draw.Translate(Position);
+        Draw.Scale(8);
+        Draw.Color(0.6, 1, 0.6, 0.5);
+        Draw.Align(Program.font.Measure(HP.ToString()) / 2, 0.5);
+        Program.font.Render(HP.ToString());
+        Draw.Load();
     }
     public virtual Block Copy()
     {

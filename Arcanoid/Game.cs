@@ -36,10 +36,15 @@ class Game : State
         CurrentLevel = level;
         World.Current.Blocks = GUtil.Load<Block[,]>("./Data/levels/lvl" + level.ToString() + ".dat");
 
+        //int t = 10;
         //for (int i = 2; i < 13; i++)
         //    for (int j = 1; j < 14; j++)
-        //        World.Current.Blocks[i, j] = null;
-        //World.Current.Blocks[8, 8] = new Block(1);
+        //        if (World.Current.Blocks[i, j] != null)
+        //        {
+        //            World.Current.Blocks[i, j].HP = t;
+        //            t = (t + 10) % 100 + 10;
+        //        }
+        ////World.Current.Blocks[5, 8].HP = 100;
 
         World.Current.Effects.Add(new ShootLine());
         World.Current.Effects.Add(new Score());
@@ -106,7 +111,7 @@ class Program
 {
     public static Random Random = new Random();
     public static MyManager Manager = new MyManager(new Menu());
-    public static Font font = new Font("./Data/font.TTF", 50, FontStyle.Bold);
+    public static Font font = new Font("./Data/font.TTF", 30, FontStyle.Bold);
     static void Main()
     {
         App.Fullscreen = false;
