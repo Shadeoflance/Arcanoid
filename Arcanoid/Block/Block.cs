@@ -6,7 +6,7 @@ using System;
 partial class Block : IRenderable
 {
     public bool bonus;
-    Texture hptex;
+    public Texture hptex;
     public virtual void Render()
     {
         if (hptex == null)

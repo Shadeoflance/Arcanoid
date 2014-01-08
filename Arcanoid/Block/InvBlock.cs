@@ -20,6 +20,9 @@ class InvBlock : Block
     }
     public override void Render()
     {
-
+        if (hptex == null)
+        {
+            hptex = Program.font.MakeTexture(HP.ToString());
+        }
     }
 }
