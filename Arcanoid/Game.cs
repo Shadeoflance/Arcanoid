@@ -11,12 +11,13 @@ class Game : State
     public static void NextLevel()
     {
         CurrentLevel++;
-        if (CurrentLevel > 10)
+        if (CurrentLevel > 50)
         {
             Program.Manager.NextState = new Victory(World.Current.Score);
             return;
         }
-        World.Current.Blocks = GUtil.Load<Block[,]>("./Data/levels/lvl" + CurrentLevel.ToString() + ".dat");
+        //World.Current.Blocks = GUtil.Load<Block[,]>("./Data/levels/lvl" + CurrentLevel.ToString() + ".dat");
+        World.Current.Blocks = LevelGenerator.Generate(CurrentLevel);
         World.Current.Platform.Position = new Vec2(0, -100);
         World.Current.Balls.Clear();
         World.Current.Balls.Refresh();
@@ -34,17 +35,14 @@ class Game : State
 
         World.Current.PlatformBall = new Ball();
         CurrentLevel = level;
-        World.Current.Blocks = GUtil.Load<Block[,]>("./Data/levels/lvl" + level.ToString() + ".dat");
+        //World.Current.Blocks = GUtil.Load<Block[,]>("./Data/levels/lvl" + level.ToString() + ".dat");
+        World.Current.Blocks = LevelGenerator.Generate(level);
 
         //int t = 10;
         //for (int i = 2; i < 13; i++)
         //    for (int j = 1; j < 14; j++)
-        //        if (World.Current.Blocks[i, j] != null)
-        //        {
-        //            World.Current.Blocks[i, j].HP = t;
-        //            t = (t + 10) % 100 + 10;
-        //        }
-        ////World.Current.Blocks[5, 8].HP = 100;
+        //        World.Current.Blocks[i, j] = new Block(100);
+        //World.Current.Blocks[1, 3] = new Block(50);
 
         World.Current.Effects.Add(new ShootLine());
         World.Current.Effects.Add(new Score());
@@ -104,6 +102,8 @@ class Game : State
         }
         if (key == Key.R)
             StateManager.NextState = new Game(1);
+        if (key == Key.N)
+            NextLevel();
     }
 }
 
@@ -112,6 +112,7 @@ class Program
     public static Random Random = new Random();
     public static MyManager Manager = new MyManager(new Menu());
     public static Font font = new Font("./Data/font.TTF", 30, FontStyle.Bold);
+    
     static void Main()
     {
         App.Fullscreen = false;

@@ -90,6 +90,7 @@
     <Compile Include="Effect\FireWork.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="LevelCreator.cs" />
+    <Compile Include="LevelGenerator.cs" />
     <Compile Include="Menu\Button.cs" />
     <Compile Include="Menu\GameOver.cs" />
     <Compile Include="Menu\HighScores.cs" />

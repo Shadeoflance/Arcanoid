@@ -56,13 +56,13 @@ class World : IRenderable, IUpdateable
                     {
                         int h = b.Box.Collide(a.Box);
                         bool sidebug = false;
-                        if (h == 0 && Blocks[i, j - 1] != null)
+                        if (h == 0 && Blocks[i, j + 1] != null)
                             sidebug = true;
-                        if (h == 1 && Blocks[i + 1, j] != null)
+                        if (h == 1 && Blocks[i - 1, j] != null)
                             sidebug = true;
-                        if (h == 2 && Blocks[i, j + 1] != null)
+                        if (h == 2 && Blocks[i, j - 1] != null)
                             sidebug = true;
-                        if (h == 3 && Blocks[i - 1, j] != null)
+                        if (h == 3 && Blocks[i + 1, j] != null)
                             sidebug = true;
                         
                         if (!sidebug)

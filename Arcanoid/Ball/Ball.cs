@@ -6,7 +6,7 @@ partial class Ball : IUpdateable, IRenderable
 {
     public int Streak = 1;
     Color Color;
-    public int Damage = 3;
+    public int Damage = 1;
 
     public Ball() { Color = new Color(0, 1, 0, Fade); }
 
