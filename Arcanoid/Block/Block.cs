@@ -23,7 +23,7 @@ partial class Block : IRenderable
         Draw.Save();
         Draw.Translate(Position);
         Draw.Scale(8);
-        Draw.Color(0.5, 0.5, 1, color.A);
+        Draw.Color(1, 1, 1);
         Draw.Scale((double)hptex.Width / (double)hptex.Height, 1);
         Draw.Align(0.5, 0.5);
         hptex.Render();
