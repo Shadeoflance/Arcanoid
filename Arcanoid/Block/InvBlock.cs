@@ -7,7 +7,9 @@ class InvBlock : Block
 {
     public InvBlock(int hp)
         : base(hp)
-    { }
+    {
+        color = new Color(0, 0, 0, 0);
+    }
     public override void Hit(int damage)
     {
         base.Hit(damage);
@@ -20,9 +22,6 @@ class InvBlock : Block
     }
     public override void Render()
     {
-        if (hptex == null)
-        {
-            hptex = Program.font.MakeTexture(HP.ToString());
-        }
+        base.Render();
     }
 }

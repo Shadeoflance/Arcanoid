@@ -20,13 +20,10 @@ partial class Block
     public int HP = 1;
     public Box Box { get { return new Box(Position, Size); } }
 
-    public Block(int hp)
-    {
-        HP = hp;
-    }
-
     public virtual void Hit(int damage)
     {
+        double t = (1 - 0.01 * HP) * 4 / 5;
+        color = new Color(t, t, t);
         HP -= damage;
         if (HP <= 0)
         {
