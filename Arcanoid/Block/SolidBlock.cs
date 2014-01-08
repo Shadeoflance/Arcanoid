@@ -19,6 +19,7 @@ class SolidBlock : Block
 
     public override void Render()
     {
-        Draw.Rect(Position + Size, Position - Size, new Color(0, 0, 0));
+        Draw.Rect(Position + Size, Position - Size, new Color(0.5, 0.5, 0.5));
+        Draw.Rect(Position + Size - new Vec2(1, 1), Position - Size + new Vec2(1, 1), new Color(0, 0, 0));
     }
 }
